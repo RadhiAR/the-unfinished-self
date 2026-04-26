@@ -11,9 +11,9 @@ export default function Home() {
       tag: "Try the New Travel AI",
     },
     {
-      title: "Life Lens",
-      desc: "My personal writings, reflections, and quiet thoughts.",
-      tag: "Writing Space",
+      title: "The Weekly Tea",
+      desc: "Stories, drama, chaos — served fresh every week. Yours, mine, everyone’s.",
+      tag: "Weekly Story Drops",
     },
   ];
 
@@ -38,10 +38,10 @@ export default function Home() {
           <div className="heroContent">
             <p className="eyebrow">Personal Universe of</p>
 
-            <h2>THE UNFINISHED SELF</h2>
+            <h2>THE UNFINISHED S(H)ELF</h2>
 
             <p className="tagline">
-              She loves to travel, lives in pink, follows her heart… sometimes straight to her boyfriend 😉 and fully believes she’s a Disney princess 👸✨
+              She loves to travel, lives in pink, follows her heart… 😉 and fully believes she’s a Disney princess 👸✨
             </p>
 
             <p className="intro">
@@ -60,7 +60,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="aboutSection">
+        <section id="about" className="aboutSection pageBlock">
           <div className="aboutLeft">
             <p className="eyebrow">About</p>
             <h2>A wonder in progress.</h2>
@@ -86,19 +86,19 @@ export default function Home() {
         </section>
 
         <section id="projects" className="projectsSection">
-          <div className="sectionTitle">
+          <div className="sectionTitle pageBlock">
             <p className="eyebrow">Projects & Pieces</p>
             <h2>Things I’m building</h2>
           </div>
 
-          <div className="projectGrid">
+          <div className="projectGrid pageBlock">
             {projects.map((project) => (
               <article
                 className={`projectCard ${project.title === "Loomeira"
-                    ? "featuredCard"
-                    : project.title === "Life Lens"
-                      ? "writingCard"
-                      : ""
+                  ? "featuredCard"
+                  : project.title === "The Weekly Tea"
+                    ? "writingCard"
+                    : ""
                   }`}
                 key={project.title}
               >
@@ -114,17 +114,17 @@ export default function Home() {
                         ? "/travel-diaries"
                         : "/life-lens"
                   }
-                  target={project.title === "Life Lens" ? "_blank" : "_self"}
-                  rel={project.title === "Life Lens" ? "noopener noreferrer" : ""}
+                  target={project.title === "The Weekly Tea" ? "_blank" : "_self"}
+                  rel={project.title === "The Weekly Tea" ? "noopener noreferrer" : ""}
                 >
-                  {project.title === "Life Lens" ? "Read →" : "Explore →"}
+                  {project.title === "The Weekly Tea" ? "Get the Tea →" : "Explore →"}
                 </a>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="interestsSection">
+        <section className="interestsSection pageBlock">
           <p className="eyebrow">Interests</p>
           <h2>Pink things. New cities. Big dreams.</h2>
 
@@ -169,7 +169,17 @@ export default function Home() {
               overflow-x: hidden;
               color: #35212b;
               font-family: Georgia, "Times New Roman", serif;
-              background: #fff7fb;
+              background:
+                radial-gradient(circle at 10% 18%, rgba(255, 214, 233, 0.55), transparent 30%),
+                radial-gradient(circle at 88% 20%, rgba(223, 243, 255, 0.55), transparent 28%),
+                linear-gradient(180deg, #fff7fb 0%, #ffffff 42%, #fff7fb 100%);
+            }
+
+            .pageBlock {
+              width: 100%;
+              max-width: 1180px;
+              margin-left: auto;
+              margin-right: auto;
             }
 
             .hero {
@@ -179,7 +189,7 @@ export default function Home() {
               align-items: center;
               justify-content: center;
               text-align: center;
-              padding: 90px 24px;
+              padding: 100px 24px;
               overflow: hidden;
             }
 
@@ -197,45 +207,54 @@ export default function Home() {
               position: absolute;
               inset: 0;
               background:
-                radial-gradient(circle at center, rgba(255, 247, 251, 0.84), rgba(255, 247, 251, 0.42) 46%, rgba(255, 220, 238, 0.12)),
-                linear-gradient(to bottom, rgba(255, 247, 251, 0.2), rgba(255, 247, 251, 0.7));
+                radial-gradient(circle at center, rgba(255, 247, 251, 0.92), rgba(255, 247, 251, 0.62) 48%, rgba(255, 220, 238, 0.22)),
+                linear-gradient(to bottom, rgba(255, 247, 251, 0.38), rgba(255, 247, 251, 0.9));
+              backdrop-filter: blur(1px);
             }
 
             .heroContent {
               position: relative;
               z-index: 2;
-              max-width: 980px;
+              max-width: 1040px;
+              padding: 64px 52px;
+              border-radius: 46px;
+              background: rgba(255, 255, 255, 0.68);
+              border: 1px solid rgba(241, 196, 214, 0.9);
+              box-shadow: 0 30px 85px rgba(184, 91, 133, 0.16);
+              backdrop-filter: blur(14px);
             }
 
             .eyebrow {
               margin: 0 0 18px;
-              font-size: 13px;
+              font-size: 12px;
               letter-spacing: 0.42em;
               text-transform: uppercase;
               color: #b85b85;
-              font-weight: 700;
+              font-weight: 800;
             }
 
             h1 {
               margin: 0;
-              font-size: clamp(46px, 7vw, 104px);
-              line-height: 0.95;
-              letter-spacing: -0.045em;
+              font-size: clamp(48px, 7.2vw, 108px);
+              line-height: 0.92;
+              letter-spacing: -0.065em;
               color: #2f1d26;
             }
 
             .tagline {
-              margin: 28px auto 0;
+              max-width: 820px;
+              margin: 30px auto 0;
               font-size: clamp(18px, 2vw, 25px);
               font-style: italic;
               color: #8d3d62;
+              line-height: 1.55;
             }
 
             .intro {
-              max-width: 790px;
-              margin: 28px auto 0;
+              max-width: 820px;
+              margin: 26px auto 0;
               font-size: 18px;
-              line-height: 1.8;
+              line-height: 1.85;
               color: #5f4553;
             }
 
@@ -244,7 +263,7 @@ export default function Home() {
               display: flex;
               justify-content: center;
               align-items: center;
-              gap: 24px;
+              gap: 18px;
               flex-wrap: wrap;
             }
 
@@ -255,8 +274,8 @@ export default function Home() {
               display: inline-flex;
               align-items: center;
               justify-content: center;
-              font-size: 13px;
-              font-weight: 800;
+              font-size: 12px;
+              font-weight: 900;
               letter-spacing: 0.16em;
               text-transform: uppercase;
               transition: all 0.25s ease;
@@ -266,15 +285,15 @@ export default function Home() {
             .primaryBtn {
               color: white;
               background: linear-gradient(135deg, #d9468c, #ee79b0, #7fc8ff);
-              box-shadow: 0 15px 35px rgba(217, 70, 140, 0.32);
+              box-shadow: 0 16px 38px rgba(217, 70, 140, 0.32);
             }
 
             .secondaryBtn {
               color: #7f3558;
-              background: rgba(255, 255, 255, 0.76);
+              background: rgba(255, 255, 255, 0.82);
               backdrop-filter: blur(10px);
               border-color: #e7a5c1;
-              box-shadow: 0 15px 35px rgba(244, 114, 182, 0.2);
+              box-shadow: 0 14px 34px rgba(244, 114, 182, 0.18);
             }
 
             .mainBtn:hover {
@@ -282,34 +301,42 @@ export default function Home() {
             }
 
             .aboutSection {
-              max-width: 1120px;
-              margin: 0 auto;
-              padding: 110px 24px;
+              padding: 96px 24px 88px;
               display: grid;
               grid-template-columns: 0.9fr 1.1fr;
-              gap: 34px;
-              align-items: center;
+              gap: 28px;
+              align-items: stretch;
             }
 
             .aboutLeft,
             .aboutRight {
-              border-radius: 34px;
-              background: rgba(255, 255, 255, 0.82);
+              border-radius: 38px;
+              background: rgba(255, 255, 255, 0.86);
               border: 1px solid #f1c4d6;
-              box-shadow: 0 18px 45px rgba(184, 91, 133, 0.13);
-              padding: 42px;
+              box-shadow: 0 20px 50px rgba(184, 91, 133, 0.12);
+              padding: 44px;
+            }
+
+            .aboutLeft {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              background:
+                radial-gradient(circle at top left, rgba(255, 214, 233, 0.55), transparent 42%),
+                rgba(255, 255, 255, 0.88);
             }
 
             h2 {
               margin: 0;
-              font-size: clamp(34px, 4vw, 60px);
-              line-height: 1.08;
+              font-size: clamp(36px, 4.6vw, 66px);
+              line-height: 1.02;
+              letter-spacing: -0.045em;
               color: #2f1d26;
             }
 
             .aboutRight p {
               margin: 0;
-              font-size: 18px;
+              font-size: 17.5px;
               line-height: 1.85;
               color: #6f5361;
             }
@@ -319,67 +346,66 @@ export default function Home() {
             }
 
             .projectsSection {
-              padding: 105px 24px;
-              background: #ffffff;
+              padding: 96px 24px;
+              background:
+                linear-gradient(180deg, #ffffff, #fff7fb);
+              border-top: 1px solid rgba(241, 196, 214, 0.55);
+              border-bottom: 1px solid rgba(241, 196, 214, 0.55);
             }
 
             .sectionTitle {
-              max-width: 900px;
-              margin: 0 auto 56px;
+              margin-bottom: 52px;
               text-align: center;
             }
 
             .projectGrid {
-              max-width: 1120px;
-              margin: 0 auto;
               display: grid;
               grid-template-columns: repeat(3, 1fr);
-              gap: 26px;
+              gap: 24px;
             }
 
             .projectCard {
-              min-height: 270px;
+              min-height: 305px;
               border-radius: 34px;
               padding: 34px;
               background: linear-gradient(145deg, #fff7fb, #fff0f7);
               border: 1px solid #f1bfd4;
-              box-shadow: 0 18px 38px rgba(184, 91, 133, 0.12);
+              box-shadow: 0 18px 42px rgba(184, 91, 133, 0.12);
               transition: all 0.25s ease;
               position: relative;
               overflow: hidden;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
             }
 
             .projectCard::before {
               content: "";
               position: absolute;
-              width: 140px;
-              height: 140px;
-              right: -55px;
-              top: -55px;
+              width: 170px;
+              height: 170px;
+              right: -70px;
+              top: -70px;
               border-radius: 999px;
-              background: rgba(255, 214, 233, 0.75);
+              background: rgba(255, 214, 233, 0.82);
               filter: blur(2px);
               opacity: 0;
               transition: all 0.25s ease;
             }
 
             .projectCard:hover {
-              transform: translateY(-7px);
-              box-shadow: 0 26px 55px rgba(184, 91, 133, 0.2);
+              transform: translateY(-8px);
+              box-shadow: 0 28px 62px rgba(184, 91, 133, 0.2);
             }
 
             .projectCard:hover::before {
               opacity: 1;
             }
 
-            .projectCard:hover h3 {
-              color: #d9468c;
-            }
-
             .featuredCard {
               background: linear-gradient(145deg, #fff1f8, #ffe0ef, #fff8fc);
               border-color: #eda7c6;
-              box-shadow: 0 22px 52px rgba(217, 70, 140, 0.18);
+              box-shadow: 0 24px 56px rgba(217, 70, 140, 0.18);
             }
 
             .writingCard {
@@ -389,13 +415,14 @@ export default function Home() {
 
             .projectCard span {
               display: inline-block;
+              width: fit-content;
               margin-bottom: 24px;
-              padding: 7px 14px;
+              padding: 8px 15px;
               border-radius: 999px;
               background: #ffe1ef;
               color: #9d3f68;
               font-size: 12px;
-              font-weight: 800;
+              font-weight: 900;
               position: relative;
               z-index: 1;
             }
@@ -412,15 +439,20 @@ export default function Home() {
 
             .projectCard h3 {
               margin: 0;
-              font-size: 29px;
+              font-size: 34px;
+              line-height: 1.05;
               color: #2f1d26;
               transition: color 0.25s ease;
               position: relative;
               z-index: 1;
             }
 
+            .projectCard:hover h3 {
+              color: #d9468c;
+            }
+
             .projectCard p {
-              margin: 18px 0 26px;
+              margin: 20px 0 28px;
               font-size: 17px;
               line-height: 1.7;
               color: #6f5361;
@@ -430,7 +462,7 @@ export default function Home() {
 
             .projectCard a {
               color: #b85b85;
-              font-weight: 800;
+              font-weight: 900;
               position: relative;
               z-index: 1;
               display: inline-flex;
@@ -444,14 +476,16 @@ export default function Home() {
             }
 
             .interestsSection {
-              max-width: 1120px;
-              margin: 85px auto;
-              padding: 70px 34px;
+              margin-top: 88px;
+              margin-bottom: 88px;
+              padding: 72px 42px;
               text-align: center;
-              border-radius: 44px;
-              background: linear-gradient(135deg, #ffd6e9, #fff0f7, #dff3ff);
+              border-radius: 46px;
+              background:
+                radial-gradient(circle at top left, rgba(255, 214, 233, 0.82), transparent 36%),
+                linear-gradient(135deg, #ffd6e9, #fff0f7, #dff3ff);
               border: 1px solid rgba(255, 255, 255, 0.8);
-              box-shadow: 0 24px 60px rgba(184, 91, 133, 0.16);
+              box-shadow: 0 26px 70px rgba(184, 91, 133, 0.16);
             }
 
             .interestGrid {
@@ -463,32 +497,41 @@ export default function Home() {
 
             .interestCard {
               padding: 24px;
-              border-radius: 22px;
+              border-radius: 24px;
               background: rgba(255, 255, 255, 0.78);
-              border: 1px solid rgba(255, 255, 255, 0.85);
+              border: 1px solid rgba(255, 255, 255, 0.9);
               color: #6d3650;
-              font-weight: 800;
-              box-shadow: 0 10px 25px rgba(184, 91, 133, 0.1);
+              font-weight: 900;
+              box-shadow: 0 12px 28px rgba(184, 91, 133, 0.1);
+              transition: all 0.25s ease;
+            }
+
+            .interestCard:hover {
+              transform: translateY(-5px);
+              background: rgba(255, 255, 255, 0.92);
             }
 
             .footer {
-              padding: 50px 24px;
-              background: white;
+              padding: 56px 24px;
+              background: #ffffff;
               text-align: center;
               color: #8d6476;
+              border-top: 1px solid rgba(241, 196, 214, 0.65);
             }
 
             .footer h3 {
               margin: 0;
               font-size: 26px;
+              letter-spacing: 0.16em;
               color: #2f1d26;
             }
 
             .footer p {
-              margin: 10px 0 0;
+              margin: 12px 0 0;
+              font-size: 15px;
             }
 
-            @media (max-width: 850px) {
+            @media (max-width: 900px) {
               .aboutSection,
               .projectGrid,
               .interestGrid {
@@ -496,12 +539,21 @@ export default function Home() {
               }
 
               .hero {
-                padding: 70px 20px;
+                padding: 72px 18px;
+              }
+
+              .heroContent {
+                padding: 48px 26px;
               }
 
               .aboutSection,
               .projectsSection {
-                padding: 80px 20px;
+                padding: 78px 18px;
+              }
+
+              .interestsSection {
+                margin: 70px 18px;
+                padding: 48px 24px;
               }
 
               .mainBtn {
