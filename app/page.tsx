@@ -4,199 +4,429 @@ export default function Home() {
       title: "Loomeira",
       desc: "A handmade world for custom crafts, creativity, and community.",
       tag: "Founder Project",
-      href: "#",
     },
     {
       title: "Travel Diaries",
       desc: "Places, memories, food, little chaos, and everything in between.",
       tag: "Life",
-      href: "#",
     },
     {
       title: "Tech Experiments",
       desc: "Tiny apps, bold ideas, unfinished builds, and things I’m learning.",
       tag: "Code",
-      href: "#",
     },
   ];
 
+  const interests = [
+    "Travel",
+    "Fashion",
+    "Building",
+    "Loomeira",
+    "Food",
+    "Design",
+    "Stories",
+    "Love",
+  ];
+
   return (
-    <main className="min-h-screen bg-[#fff7fb] text-[#3b2430]">
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/dream.png')",
-          }}
-        />
+    <>
+      <main className="page">
+        <section className="hero">
+          <div className="heroBg" />
+          <div className="heroOverlay" />
 
-        {/* Light overlay for readability */}
-        <div className="absolute inset-0 bg-white/10" />
+          <div className="heroContent">
+            <p className="eyebrow">Personal Universe</p>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <p className="mb-5 text-sm tracking-[0.4em] uppercase text-[#b85b85]">
-            personal universe
-          </p>
+            <h1>THE UNFINISHED SELF</h1>
 
-          <h1 className="text-5xl md:text-8xl font-serif font-semibold tracking-tight text-[#2f1d26] drop-shadow-sm">
-            THE UNFINISHED SELF
-          </h1>
-
-          <p className="mt-6 text-xl md:text-2xl italic text-[#7b405e] drop-shadow-sm">
-            She wears pink, follows her heart… and sometimes her boyfriend 😉
-          </p>
-
-          <p className="mt-8 max-w-2xl mx-auto text-base md:text-lg leading-8 text-[#5f4553] drop-shadow-sm">
-            A soft little corner of the internet where I collect my projects,
-            stories, travel memories, ideas, experiments, and every version of
-            myself still becoming.
-          </p>
-
-          {/* Disney-style Buttons */}
-          <div className="mt-12 flex flex-row flex-wrap gap-8 justify-center items-center">
-            <a
-              href="#projects"
-              className="relative inline-flex min-w-[240px] items-center justify-center rounded-full px-8 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white overflow-hidden
-              bg-gradient-to-r from-[#ff3f9b] via-[#a855f7] to-[#38bdf8]
-              shadow-[0_6px_0_#b83280,0_14px_25px_rgba(236,72,153,0.35)]
-              transition-all duration-300
-              hover:-translate-y-[2px] hover:shadow-[0_8px_0_#b83280,0_20px_30px_rgba(236,72,153,0.45)]
-              active:translate-y-[1px]"
-            >
-              <span className="absolute top-1 left-4 right-4 h-[35%] rounded-full bg-white/30" />
-              <span className="absolute inset-[3px] rounded-full border border-white/45" />
-              <span className="relative z-10">🦋 Explore My World</span>
-            </a>
-
-            <a
-              href="#about"
-              className="relative inline-flex min-w-[240px] items-center justify-center rounded-full px-8 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[#8a2f61] overflow-hidden
-              bg-gradient-to-r from-[#fff0fb] via-[#ffd6ef] to-[#e0f2fe]
-              border border-white/70
-              shadow-[0_6px_0_#e79ac4,0_14px_25px_rgba(244,114,182,0.3)]
-              transition-all duration-300
-              hover:-translate-y-[2px] hover:shadow-[0_8px_0_#e79ac4,0_20px_30px_rgba(244,114,182,0.4)]
-              active:translate-y-[1px]"
-            >
-              <span className="absolute top-1 left-4 right-4 h-[35%] rounded-full bg-white/55" />
-              <span className="absolute inset-[3px] rounded-full border border-white/70" />
-              <span className="relative z-10">✨ About Me</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="px-6 py-24">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <div className="rounded-[2rem] bg-white/80 p-8 md:p-10 shadow-xl border border-pink-100">
-            <p className="text-sm uppercase tracking-[0.3em] text-[#b85b85] mb-4">
-              about
+            <p className="tagline">
+              She wears pink, follows her heart… and sometimes her boyfriend 😉
             </p>
-            <h2 className="text-4xl md:text-5xl font-serif text-[#2f1d26]">
-              A woman in progress.
-            </h2>
+
+            <p className="intro">
+              A soft little corner of the internet where I collect my projects,
+              stories, travel memories, ideas, experiments, and every version of
+              myself still becoming.
+            </p>
+
+            <div className="buttonRow">
+              <a href="#projects" className="mainBtn primaryBtn">
+                Explore My World
+              </a>
+
+              <a href="#about" className="mainBtn secondaryBtn">
+                About Me
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="aboutSection">
+          <div className="aboutLeft">
+            <p className="eyebrow">About</p>
+            <h2>A woman in progress.</h2>
           </div>
 
-          <div className="text-[#6f5361] leading-8 text-lg">
+          <div className="aboutRight">
             <p>
               I’m not trying to be one finished thing. I like building, dreaming,
               designing, travelling, overthinking pretty things, and following
               whatever feels honest to me.
             </p>
-            <p className="mt-5">
+
+            <p>
               This space is not just a portfolio. It is a living moodboard of my
               projects, my interests, my soft chaos, my ambition, and the stories
               I keep becoming.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* PROJECTS */}
-      <section id="projects" className="px-6 py-24 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-sm uppercase tracking-[0.3em] text-[#b85b85] mb-4">
-              projects & pieces
-            </p>
-            <h2 className="text-4xl md:text-6xl font-serif text-[#2f1d26]">
-              Things I’m building
-            </h2>
+        <section id="projects" className="projectsSection">
+          <div className="sectionTitle">
+            <p className="eyebrow">Projects & Pieces</p>
+            <h2>Things I’m building</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="projectGrid">
             {projects.map((project) => (
-              <a
-                key={project.title}
-                href={project.href}
-                className="group rounded-[2rem] bg-[#fff7fb] p-7 border border-pink-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition"
-              >
-                <span className="inline-block mb-5 rounded-full bg-[#ffe1ef] px-4 py-1 text-xs font-semibold text-[#9d3f68]">
-                  {project.tag}
-                </span>
-
-                <h3 className="text-2xl font-serif text-[#2f1d26]">
-                  {project.title}
-                </h3>
-
-                <p className="mt-4 text-[#6f5361] leading-7">
-                  {project.desc}
-                </p>
-
-                <p className="mt-6 text-sm font-semibold text-[#b85b85] group-hover:translate-x-1 transition">
-                  View more →
-                </p>
-              </a>
+              <article className="projectCard" key={project.title}>
+                <span>{project.tag}</span>
+                <h3>{project.title}</h3>
+                <p>{project.desc}</p>
+                <a href="#">View more →</a>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* INTERESTS */}
-      <section className="px-6 py-24">
-        <div className="max-w-6xl mx-auto rounded-[2.5rem] bg-gradient-to-br from-[#ffd6e9] via-[#fff0f7] to-[#ffe8f2] p-8 md:p-14 shadow-xl">
-          <p className="text-sm uppercase tracking-[0.3em] text-[#b85b85] mb-4">
-            interests
-          </p>
+        <section className="interestsSection">
+          <p className="eyebrow">Interests</p>
+          <h2>Pink things. New cities. Big dreams.</h2>
 
-          <h2 className="text-4xl md:text-6xl font-serif text-[#2f1d26]">
-            Pink things. New cities. Big dreams.
-          </h2>
-
-          <div className="mt-10 grid md:grid-cols-4 gap-4">
-            {[
-              "Travel",
-              "Fashion",
-              "Building",
-              "Loomeira",
-              "Food",
-              "Design",
-              "Stories",
-              "Love",
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-2xl bg-white/70 px-5 py-6 text-center text-[#6d3650] font-semibold shadow-sm"
-              >
+          <div className="interestGrid">
+            {interests.map((item) => (
+              <div className="interestCard" key={item}>
                 {item}
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FOOTER */}
-      <footer className="px-6 py-10 text-center text-[#8d6476]">
-        <p className="font-serif text-2xl text-[#2f1d26]">
-          THE UNFINISHED SELF
-        </p>
-        <p className="mt-2 text-sm">
-          Still becoming. Still building. Still wearing pink.
-        </p>
-      </footer>
-    </main>
+        <footer className="footer">
+          <h3>THE UNFINISHED SELF</h3>
+          <p>Still becoming. Still building. Still wearing pink.</p>
+        </footer>
+      </main>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            * {
+              box-sizing: border-box;
+            }
+
+            html {
+              scroll-behavior: smooth;
+            }
+
+            body {
+              margin: 0;
+              background: #fff7fb;
+            }
+
+            a {
+              color: inherit;
+              text-decoration: none;
+            }
+
+            .page {
+              min-height: 100vh;
+              overflow-x: hidden;
+              color: #35212b;
+              font-family: Georgia, "Times New Roman", serif;
+              background: #fff7fb;
+            }
+
+            .hero {
+              position: relative;
+              min-height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              padding: 90px 24px;
+              overflow: hidden;
+            }
+
+            .heroBg {
+              position: absolute;
+              inset: 0;
+              background-image: url("/dream.png");
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              transform: scale(1.04);
+            }
+
+            .heroOverlay {
+              position: absolute;
+              inset: 0;
+              background:
+                radial-gradient(circle at center, rgba(255, 247, 251, 0.84), rgba(255, 247, 251, 0.42) 46%, rgba(255, 220, 238, 0.12)),
+                linear-gradient(to bottom, rgba(255, 247, 251, 0.2), rgba(255, 247, 251, 0.7));
+            }
+
+            .heroContent {
+              position: relative;
+              z-index: 2;
+              max-width: 980px;
+            }
+
+            .eyebrow {
+              margin: 0 0 18px;
+              font-size: 13px;
+              letter-spacing: 0.42em;
+              text-transform: uppercase;
+              color: #b85b85;
+              font-weight: 700;
+            }
+
+            h1 {
+              margin: 0;
+              font-size: clamp(46px, 7vw, 104px);
+              line-height: 0.95;
+              letter-spacing: -0.045em;
+              color: #2f1d26;
+            }
+
+            .tagline {
+              margin: 28px auto 0;
+              font-size: clamp(18px, 2vw, 25px);
+              font-style: italic;
+              color: #8d3d62;
+            }
+
+            .intro {
+              max-width: 790px;
+              margin: 28px auto 0;
+              font-size: 18px;
+              line-height: 1.8;
+              color: #5f4553;
+            }
+
+            .buttonRow {
+              margin-top: 42px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 24px;
+              flex-wrap: wrap;
+            }
+
+            .mainBtn {
+              min-width: 230px;
+              padding: 15px 30px;
+              border-radius: 999px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 13px;
+              font-weight: 800;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              transition: all 0.25s ease;
+              border: 1px solid rgba(255, 255, 255, 0.75);
+            }
+
+            .primaryBtn {
+              color: white;
+              background: linear-gradient(135deg, #d9468c, #ee79b0, #7fc8ff);
+              box-shadow: 0 15px 35px rgba(217, 70, 140, 0.32);
+            }
+
+            .secondaryBtn {
+              color: #7f3558;
+              background: rgba(255, 255, 255, 0.76);
+              backdrop-filter: blur(10px);
+              border-color: #e7a5c1;
+              box-shadow: 0 15px 35px rgba(244, 114, 182, 0.2);
+            }
+
+            .mainBtn:hover {
+              transform: translateY(-4px);
+            }
+
+            .aboutSection {
+              max-width: 1120px;
+              margin: 0 auto;
+              padding: 110px 24px;
+              display: grid;
+              grid-template-columns: 0.9fr 1.1fr;
+              gap: 34px;
+              align-items: center;
+            }
+
+            .aboutLeft,
+            .aboutRight {
+              border-radius: 34px;
+              background: rgba(255, 255, 255, 0.82);
+              border: 1px solid #f1c4d6;
+              box-shadow: 0 18px 45px rgba(184, 91, 133, 0.13);
+              padding: 42px;
+            }
+
+            h2 {
+              margin: 0;
+              font-size: clamp(34px, 4vw, 60px);
+              line-height: 1.08;
+              color: #2f1d26;
+            }
+
+            .aboutRight p {
+              margin: 0;
+              font-size: 18px;
+              line-height: 1.85;
+              color: #6f5361;
+            }
+
+            .aboutRight p + p {
+              margin-top: 22px;
+            }
+
+            .projectsSection {
+              padding: 105px 24px;
+              background: #ffffff;
+            }
+
+            .sectionTitle {
+              max-width: 900px;
+              margin: 0 auto 56px;
+              text-align: center;
+            }
+
+            .projectGrid {
+              max-width: 1120px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 26px;
+            }
+
+            .projectCard {
+              min-height: 270px;
+              border-radius: 34px;
+              padding: 34px;
+              background: linear-gradient(145deg, #fff7fb, #fff0f7);
+              border: 1px solid #f1bfd4;
+              box-shadow: 0 18px 38px rgba(184, 91, 133, 0.12);
+              transition: all 0.25s ease;
+            }
+
+            .projectCard:hover {
+              transform: translateY(-7px);
+              box-shadow: 0 26px 55px rgba(184, 91, 133, 0.2);
+            }
+
+            .projectCard span {
+              display: inline-block;
+              margin-bottom: 24px;
+              padding: 7px 14px;
+              border-radius: 999px;
+              background: #ffe1ef;
+              color: #9d3f68;
+              font-size: 12px;
+              font-weight: 800;
+            }
+
+            .projectCard h3 {
+              margin: 0;
+              font-size: 29px;
+              color: #2f1d26;
+            }
+
+            .projectCard p {
+              margin: 18px 0 26px;
+              font-size: 17px;
+              line-height: 1.7;
+              color: #6f5361;
+            }
+
+            .projectCard a {
+              color: #b85b85;
+              font-weight: 800;
+            }
+
+            .interestsSection {
+              max-width: 1120px;
+              margin: 85px auto;
+              padding: 70px 34px;
+              text-align: center;
+              border-radius: 44px;
+              background: linear-gradient(135deg, #ffd6e9, #fff0f7, #dff3ff);
+              border: 1px solid rgba(255, 255, 255, 0.8);
+              box-shadow: 0 24px 60px rgba(184, 91, 133, 0.16);
+            }
+
+            .interestGrid {
+              margin-top: 42px;
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 16px;
+            }
+
+            .interestCard {
+              padding: 24px;
+              border-radius: 22px;
+              background: rgba(255, 255, 255, 0.78);
+              border: 1px solid rgba(255, 255, 255, 0.85);
+              color: #6d3650;
+              font-weight: 800;
+              box-shadow: 0 10px 25px rgba(184, 91, 133, 0.1);
+            }
+
+            .footer {
+              padding: 50px 24px;
+              background: white;
+              text-align: center;
+              color: #8d6476;
+            }
+
+            .footer h3 {
+              margin: 0;
+              font-size: 26px;
+              color: #2f1d26;
+            }
+
+            .footer p {
+              margin: 10px 0 0;
+            }
+
+            @media (max-width: 850px) {
+              .aboutSection,
+              .projectGrid,
+              .interestGrid {
+                grid-template-columns: 1fr;
+              }
+
+              .hero {
+                padding: 70px 20px;
+              }
+
+              .aboutSection,
+              .projectsSection {
+                padding: 80px 20px;
+              }
+
+              .mainBtn {
+                width: 100%;
+                max-width: 330px;
+              }
+            }
+          `,
+        }}
+      />
+    </>
   );
 }
