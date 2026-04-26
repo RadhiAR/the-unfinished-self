@@ -8,12 +8,12 @@ export default function Home() {
     {
       title: "Travel Diaries",
       desc: "Places, memories, food, little chaos, and everything in between.",
-      tag: "Life",
+      tag: "Try the New Travel AI",
     },
     {
-      title: "Tech Experiments",
-      desc: "Tiny apps, bold ideas, unfinished builds, and things I’m learning.",
-      tag: "Code",
+      title: "Life Lens",
+      desc: "My personal writings, reflections, and quiet thoughts.",
+      tag: "Writing Space",
     },
   ];
 
@@ -36,18 +36,16 @@ export default function Home() {
           <div className="heroOverlay" />
 
           <div className="heroContent">
-            <p className="eyebrow">Personal Universe</p>
+            <p className="eyebrow">Personal Universe of</p>
 
-            <h1>THE UNFINISHED SELF</h1>
+            <h2>THE UNFINISHED SELF</h2>
 
             <p className="tagline">
-              She wears pink, follows her heart… and sometimes her boyfriend 😉
+              She loves to travel, lives in pink, follows her heart… sometimes straight to her boyfriend 😉 and fully believes she’s a Disney princess 👸✨
             </p>
 
             <p className="intro">
-              A soft little corner of the internet where I collect my projects,
-              stories, travel memories, ideas, experiments, and every version of
-              myself still becoming.
+              A serene corner of the internet 🌙✨ where my stories 📖, travels ✈️, dreams 🌟, and ideas 💭 flow together. Here, I capture the magic of my adventures 🌍, the quiet moments of discovery 🦋, and every version of myself still evolving, one dream at a time 💫.
             </p>
 
             <div className="buttonRow">
@@ -65,20 +63,24 @@ export default function Home() {
         <section id="about" className="aboutSection">
           <div className="aboutLeft">
             <p className="eyebrow">About</p>
-            <h2>A woman in progress.</h2>
+            <h2>A wonder in progress.</h2>
           </div>
 
           <div className="aboutRight">
             <p>
-              I’m not trying to be one finished thing. I like building, dreaming,
-              designing, travelling, overthinking pretty things, and following
-              whatever feels honest to me.
+              I don’t believe in being a finished product. I’m constantly building, dreaming ✨,
+              designing 🎨, and exploring 🌍—whether it’s through travel ✈️, creative projects 💡,
+              or the beauty of everyday moments. I follow what resonates with me, always staying
+              true to my heart ❤️ and evolving along the way.
             </p>
 
             <p>
-              This space is not just a portfolio. It is a living moodboard of my
-              projects, my interests, my soft chaos, my ambition, and the stories
-              I keep becoming.
+              This space is more than just a portfolio; it’s a reflection of my journey.
+              A dynamic collection of my work 📚, ideas 💭, travels 🌎, and passions 🌸, all woven together
+              into a tapestry of soft chaos and ambition 💫. Here, I share the stories I’m writing
+              for myself and the versions of me that are always unfolding. Every project and
+              experience is a new chapter of discovery 📖, one that I hope will inspire, connect,
+              and grow with you.
             </p>
           </div>
         </section>
@@ -91,11 +93,32 @@ export default function Home() {
 
           <div className="projectGrid">
             {projects.map((project) => (
-              <article className="projectCard" key={project.title}>
+              <article
+                className={`projectCard ${project.title === "Loomeira"
+                    ? "featuredCard"
+                    : project.title === "Life Lens"
+                      ? "writingCard"
+                      : ""
+                  }`}
+                key={project.title}
+              >
                 <span>{project.tag}</span>
                 <h3>{project.title}</h3>
                 <p>{project.desc}</p>
-                <a href="#">View more →</a>
+
+                <a
+                  href={
+                    project.title === "Loomeira"
+                      ? "/loomeira"
+                      : project.title === "Travel Diaries"
+                        ? "/travel-diaries"
+                        : "/life-lens"
+                  }
+                  target={project.title === "Life Lens" ? "_blank" : "_self"}
+                  rel={project.title === "Life Lens" ? "noopener noreferrer" : ""}
+                >
+                  {project.title === "Life Lens" ? "Read →" : "Explore →"}
+                </a>
               </article>
             ))}
           </div>
@@ -322,11 +345,46 @@ export default function Home() {
               border: 1px solid #f1bfd4;
               box-shadow: 0 18px 38px rgba(184, 91, 133, 0.12);
               transition: all 0.25s ease;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .projectCard::before {
+              content: "";
+              position: absolute;
+              width: 140px;
+              height: 140px;
+              right: -55px;
+              top: -55px;
+              border-radius: 999px;
+              background: rgba(255, 214, 233, 0.75);
+              filter: blur(2px);
+              opacity: 0;
+              transition: all 0.25s ease;
             }
 
             .projectCard:hover {
               transform: translateY(-7px);
               box-shadow: 0 26px 55px rgba(184, 91, 133, 0.2);
+            }
+
+            .projectCard:hover::before {
+              opacity: 1;
+            }
+
+            .projectCard:hover h3 {
+              color: #d9468c;
+            }
+
+            .featuredCard {
+              background: linear-gradient(145deg, #fff1f8, #ffe0ef, #fff8fc);
+              border-color: #eda7c6;
+              box-shadow: 0 22px 52px rgba(217, 70, 140, 0.18);
+            }
+
+            .writingCard {
+              background: linear-gradient(145deg, #fff9fc, #fff4f8, #f8fbff);
+              border-color: #f3c6d9;
             }
 
             .projectCard span {
@@ -338,12 +396,27 @@ export default function Home() {
               color: #9d3f68;
               font-size: 12px;
               font-weight: 800;
+              position: relative;
+              z-index: 1;
+            }
+
+            .featuredCard span {
+              background: #ffd3e8;
+              color: #8f2f5c;
+            }
+
+            .writingCard span {
+              background: #fff0f7;
+              color: #9b4a70;
             }
 
             .projectCard h3 {
               margin: 0;
               font-size: 29px;
               color: #2f1d26;
+              transition: color 0.25s ease;
+              position: relative;
+              z-index: 1;
             }
 
             .projectCard p {
@@ -351,11 +424,23 @@ export default function Home() {
               font-size: 17px;
               line-height: 1.7;
               color: #6f5361;
+              position: relative;
+              z-index: 1;
             }
 
             .projectCard a {
               color: #b85b85;
               font-weight: 800;
+              position: relative;
+              z-index: 1;
+              display: inline-flex;
+              align-items: center;
+              transition: all 0.25s ease;
+            }
+
+            .projectCard a:hover {
+              color: #d9468c;
+              transform: translateX(4px);
             }
 
             .interestsSection {
