@@ -33,7 +33,7 @@ export default function LifeLensPage() {
         <>
             <main className="lifePage">
                 <section className="lifeHero">
-                    <p className="eyebrow">Life Lens</p>
+                    <p className="eyebrow">THE WEEKLY TEA</p>
                     <h1>My Mania shelf ✨</h1>
 
                     <p className="sub">

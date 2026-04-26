@@ -21,14 +21,13 @@ export default function LifeLensLandingPage() {
         <>
             <main className="lifeLanding">
                 <section className="hero">
-                    <div className="badge">Life Lens</div>
+                    <div className="badge">THE WEEKLY TEA</div>
 
-                    <h1>Where feelings become words.</h1>
+                    <h2>Where feelings meet the words they were meant for.</h2>
 
                     <p className="heroText">
-                        Life Lens is my personal writing corner — a soft, honest space for
-                        reflections, stories, emotional notes, quiet thoughts, and pieces of
-                        the version of me that is still becoming.
+                        Stories, drama, chaos — served fresh every week. ☕
+                        A soft, honest corner for reflections, emotional notes, and chapters of a life still becoming — mine, yours, everyone’s.
                     </p>
 
                     <div className="heroActions">
@@ -43,7 +42,7 @@ export default function LifeLensLandingPage() {
                 </section>
 
                 <section className="aboutBlock">
-                    <p className="eyebrow">What is Life Lens?</p>
+                    <p className="eyebrow">What is THE WEEKLY TEA?</p>
                     <h2>A softer way to see my world.</h2>
 
                     <p>
@@ -69,7 +68,7 @@ export default function LifeLensLandingPage() {
                         “Not everything needs to be complete to be beautiful.”
                     </h2>
                     <p>
-                        Life Lens is for the thoughts that are still unfolding, the stories
+                        THE WEEKLY TEA is for the thoughts that are still unfolding, the stories
                         that are still forming, and the girl who is still becoming.
                     </p>
                 </section>
