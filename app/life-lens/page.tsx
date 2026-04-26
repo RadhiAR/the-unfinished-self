@@ -1,5 +1,6 @@
 import WeeklyTeaNavbar from "./WeeklyTeaNavbar";
 
+
 export default function LifeLensLandingPage() {
     const features = [
         {

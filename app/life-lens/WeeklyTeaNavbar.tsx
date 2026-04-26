@@ -1,10 +1,20 @@
+"use client";
+
+import { useState } from "react";
+import WeeklyTeaLoginModal from "./WeeklyTeaLoginModal";
+
 export default function WeeklyTeaNavbar() {
+    const [loginType, setLoginType] = useState<"read" | "write" | null>(null);
+
     return (
         <>
             <nav className="teaNavbar">
                 <a href="/" className="navBrand">
-                    <span className="brandMark">☕</span>
-                    <span>The Weekly Tea</span>
+                    <img
+                        src="/logo1.png"
+                        alt="The Weekly Tea Logo"
+                        className="brandLogo"
+                    />
                 </a>
 
                 <div className="navLinks">
@@ -13,10 +23,29 @@ export default function WeeklyTeaNavbar() {
                     <a href="/life-lens/chapters">Shelf</a>
                 </div>
 
-                <a href="/life-lens/chapters" className="navCta">
-                    Subscribe to Write
-                </a>
+                <div className="navActions">
+                    <button
+                        type="button"
+                        className="navCta navCtaRead"
+                        onClick={() => setLoginType("read")}
+                    >
+                        Click to Read
+                    </button>
+
+                    <button
+                        type="button"
+                        className="navCta navCtaWrite"
+                        onClick={() => setLoginType("write")}
+                    >
+                        Click to Write
+                    </button>
+                </div>
             </nav>
+
+            <WeeklyTeaLoginModal
+                type={loginType}
+                onClose={() => setLoginType(null)}
+            />
 
             <style
                 dangerouslySetInnerHTML={{
@@ -28,7 +57,7 @@ export default function WeeklyTeaNavbar() {
                             width: 100%;
                             max-width: 1180px;
                             margin: 0 auto 28px;
-                            padding: 12px 14px 12px 18px;
+                            padding: 8px 18px;
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
@@ -42,25 +71,22 @@ export default function WeeklyTeaNavbar() {
                         }
 
                         .navBrand {
-                            display: inline-flex;
+                            display: flex;
                             align-items: center;
-                            gap: 10px;
-                            font-size: 18px;
-                            font-weight: 900;
-                            color: #2f1d26;
                             text-decoration: none;
-                            white-space: nowrap;
                         }
 
-                        .brandMark {
-                            width: 34px;
-                            height: 34px;
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            border-radius: 999px;
-                            background: linear-gradient(135deg, #ffe1ef, #dff3ff);
-                            box-shadow: inset 0 0 0 1px rgba(184, 91, 133, 0.18);
+                        .brandLogo {
+                            height: 100px;
+                            width: auto;
+                            object-fit: contain;
+                            display: block;
+                            opacity: 0.96;
+                            transition: transform 0.25s ease;
+                        }
+
+                        .brandLogo:hover {
+                            transform: scale(1.04);
                         }
 
                         .navLinks {
@@ -83,32 +109,53 @@ export default function WeeklyTeaNavbar() {
                             color: #d9468c;
                         }
 
+                        .navActions {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            flex-shrink: 0;
+                        }
+
                         .navCta {
-                            padding: 12px 20px;
+                            border: none;
+                            cursor: pointer;
+                            padding: 12px 18px;
                             border-radius: 999px;
                             color: white;
-                            background: linear-gradient(135deg, #d9468c, #f472b6, #7fc8ff);
-                            font-size: 12px;
+                            font-size: 11px;
                             font-weight: 900;
-                            letter-spacing: 0.12em;
+                            letter-spacing: 0.11em;
                             text-transform: uppercase;
                             text-decoration: none;
-                            box-shadow: 0 14px 30px rgba(217, 70, 140, 0.28);
-                            transition: transform 0.22s ease;
+                            box-shadow: 0 14px 30px rgba(217, 70, 140, 0.22);
+                            transition: transform 0.22s ease, box-shadow 0.22s ease;
                             white-space: nowrap;
+                            font-family: Georgia, "Times New Roman", serif;
+                        }
+
+                        .navCtaRead {
+                            background: linear-gradient(135deg, #b783ff, #f0a6ca, #ffd1e3);
+                        }
+
+                        .navCtaWrite {
+                            background: linear-gradient(135deg, #d9468c, #f472b6, #7fc8ff);
                         }
 
                         .navCta:hover {
                             transform: translateY(-3px);
                         }
 
-                        @media (max-width: 760px) {
+                        @media (max-width: 900px) {
                             .teaNavbar {
                                 position: relative;
                                 top: 0;
                                 flex-direction: column;
-                                border-radius: 28px;
-                                padding: 18px;
+                                border-radius: 34px;
+                                padding: 20px;
+                            }
+
+                            .brandLogo {
+                                height: 85px;
                             }
 
                             .navLinks {
@@ -116,9 +163,15 @@ export default function WeeklyTeaNavbar() {
                                 flex-wrap: wrap;
                             }
 
-                            .navCta {
+                            .navActions {
                                 width: 100%;
-                                text-align: center;
+                                justify-content: center;
+                                flex-wrap: wrap;
+                            }
+
+                            .navCta {
+                                flex: 1;
+                                min-width: 190px;
                             }
                         }
                     `,
