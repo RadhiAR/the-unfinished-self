@@ -104,10 +104,10 @@ export default function Home() {
             {projects.map((project) => (
               <article
                 className={`projectCard ${project.title === "Loomeira"
-                  ? "featuredCard"
-                  : project.title === "The Weekly Tea"
-                    ? "writingCard"
-                    : ""
+                    ? "featuredCard"
+                    : project.title === "The Weekly Tea"
+                      ? "writingCard"
+                      : ""
                   }`}
                 key={project.title}
               >
@@ -123,8 +123,16 @@ export default function Home() {
                         ? "/travel-diaries"
                         : "/life-lens"
                   }
-                  target={project.title === "The Weekly Tea" ? "_blank" : "_self"}
-                  rel={project.title === "The Weekly Tea" ? "noopener noreferrer" : ""}
+                  target={
+                    project.title === "Travel Diaries" || project.title === "The Weekly Tea"
+                      ? "_blank"
+                      : "_self"
+                  }
+                  rel={
+                    project.title === "Travel Diaries" || project.title === "The Weekly Tea"
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                 >
                   {project.title === "The Weekly Tea" ? "Get the Tea →" : "Explore →"}
                 </a>
@@ -240,14 +248,6 @@ export default function Home() {
               text-transform: uppercase;
               color: #b85b85;
               font-weight: 800;
-            }
-
-            h1 {
-              margin: 0;
-              font-size: clamp(48px, 7.2vw, 108px);
-              line-height: 0.92;
-              letter-spacing: -0.065em;
-              color: #2f1d26;
             }
 
             .tagline {
@@ -379,8 +379,7 @@ export default function Home() {
 
             .projectsSection {
               padding: 96px 24px;
-              background:
-                linear-gradient(180deg, #ffffff, #fff7fb);
+              background: linear-gradient(180deg, #ffffff, #fff7fb);
               border-top: 1px solid rgba(241, 196, 214, 0.55);
               border-bottom: 1px solid rgba(241, 196, 214, 0.55);
             }
