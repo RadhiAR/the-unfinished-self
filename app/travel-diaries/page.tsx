@@ -74,13 +74,10 @@ export default function TravelDiaries() {
                     <p className="eyebrow">The mood</p>
 
                     <h2>
-                        “Not everything needs to be complete to be beautiful.”
+                        “Journeys that are rushed, locations chosen at the last minute… but somehow end up meaning the most.”
                     </h2>
 
                     <p>
-                        Travel Diaries is for the moments that weren’t planned, the roads
-                        that didn’t make sense at first, and the memories that somehow
-                        became everything.
                     </p>
                 </section>
 
