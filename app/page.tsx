@@ -45,7 +45,7 @@ export default function Home() {
             </p>
 
             <p className="intro">
-              A serene corner of the internet 🌙✨ where my stories 📖, travels ✈️, dreams 🌟, and ideas 💭 flow together. Here, I capture the magic of my adventures 🌍, the quiet moments of discovery 🦋, and every version of myself still evolving, one dream at a time 💫.
+              A serene corner of the internet 🌙✨ where my stories 📖, travels ✈️, dreams 🌟, and ideas 💭 flow together. Somewhere between quiet thoughts and lines of code 💻, I try to make sense of things—building, exploring, and growing in my own way. Here, I capture little moments, small discoveries 🦋, and every version of myself still unfolding, one day at a time 💫.
             </p>
 
             <div className="buttonRow">
@@ -82,6 +82,15 @@ export default function Home() {
               experience is a new chapter of discovery 📖, one that I hope will inspire, connect,
               and grow with you.
             </p>
+
+            <a
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resumeBtn"
+            >
+              View My Resume →
+            </a>
           </div>
         </section>
 
@@ -343,6 +352,29 @@ export default function Home() {
 
             .aboutRight p + p {
               margin-top: 22px;
+            }
+
+            .resumeBtn {
+              margin-top: 30px;
+              display: inline-flex;
+              width: fit-content;
+              align-items: center;
+              justify-content: center;
+              padding: 14px 26px;
+              border-radius: 999px;
+              background: linear-gradient(135deg, #d9468c, #ee79b0, #7fc8ff);
+              color: white;
+              font-size: 12px;
+              font-weight: 900;
+              letter-spacing: 0.14em;
+              text-transform: uppercase;
+              box-shadow: 0 16px 34px rgba(217, 70, 140, 0.28);
+              transition: all 0.25s ease;
+            }
+
+            .resumeBtn:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 22px 42px rgba(217, 70, 140, 0.34);
             }
 
             .projectsSection {
