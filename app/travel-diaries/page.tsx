@@ -46,6 +46,7 @@ export default function TravelDiaries() {
                         </p>
                     </div>
                 </section>
+
                 {/* ✅ PLACES SECTION */}
                 <section className="travelHero">
                     <p className="eyebrow">Choose a place</p>
@@ -56,10 +57,17 @@ export default function TravelDiaries() {
                         {places.map((place) => {
                             const slug = place.toLowerCase().replace(/\s+/g, "-");
 
+                            // 🔥 FIXED ROUTING
+                            let href = `/travel/${slug}`;
+
+                            if (place === "Illinois") {
+                                href = "/travel/illinois/chicago";
+                            }
+
                             return (
                                 <a
                                     key={place}
-                                    href={`/travel/${slug}`}
+                                    href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="placeCard"
@@ -70,7 +78,8 @@ export default function TravelDiaries() {
                         })}
                     </div>
                 </section>
-                {/* 🔥 NEW MOOD SECTION */}
+
+                {/* 🔥 MOOD SECTION */}
                 <section className="moodSection">
                     <p className="eyebrow">The mood</p>
 
@@ -78,10 +87,8 @@ export default function TravelDiaries() {
                         “Journeys that are rushed, locations chosen at the last minute… but somehow end up meaning the most.”
                     </h2>
 
-                    <p>
-                    </p>
+                    <p></p>
                 </section>
-
             </main>
 
             <style
@@ -105,7 +112,6 @@ export default function TravelDiaries() {
             padding: 1px 20px 60px;
           }
 
-          /* INTRO */
           .travelIntro {
             width: 100%;
             max-width: 1180px;
@@ -177,7 +183,6 @@ export default function TravelDiaries() {
             color: #2f1d26;
           }
 
-          /* 🔥 MOOD SECTION */
           .moodSection {
             max-width: 1180px;
             margin: 40px auto 0;
@@ -199,14 +204,6 @@ export default function TravelDiaries() {
             color: #2f1d26;
           }
 
-          .moodSection p:last-child {
-            margin-top: 22px;
-            font-size: 17px;
-            color: #6f5361;
-            line-height: 1.7;
-          }
-
-          /* PLACES */
           .travelHero {
             width: 100%;
             max-width: 1180px;
@@ -242,6 +239,8 @@ export default function TravelDiaries() {
             font-weight: 800;
             color: #6d3650;
             box-shadow: 0 12px 28px rgba(184, 91, 133, 0.12);
+            text-decoration: none;
+            display: block;
           }
 
           @media (max-width: 900px) {
