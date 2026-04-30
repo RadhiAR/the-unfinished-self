@@ -1,153 +1,142 @@
-"use client";
+import styles from "../../travelLocation.module.css";
 
-import { useState } from "react";
-
-type LocationKey = "carlsbad" | "whiteSands" | "sandia";
-
-const carlsbadSections = [
-    {
-        title: "The entrance into another world",
-        images: [
-            "/travel/new-mexico/carlsbad-11.jpeg",
-            "/travel/new-mexico/carlsbad-9.jpeg",
-        ],
-        text: "Carlsbad Caverns starts above ground...",
-    },
+const gallery = [
+    "/travel/new-mexico/sandia1.jpeg",
+    "/travel/new-mexico/sandia2.jpeg",
+    "/travel/new-mexico/sandia3.jpeg",
+    "/travel/new-mexico/sandia4.jpeg",
+    "/travel/new-mexico/sandia5.jpeg",
+    "/travel/new-mexico/sandia6.jpeg",
+    "/travel/new-mexico/sandia8.jpeg",
 ];
 
-const sandiaSections = [
-    {
-        title: "The ride above Albuquerque",
-        images: [
-            "/travel/new-mexico/sandia/sandia1.jpeg",
-            "/travel/new-mexico/sandia/sandia2.jpeg",
-        ],
-        text: "Sandia Peak starts with the tramway slowly pulling away from the base and rising over the rocky mountains. The city begins to fall behind, the cliffs come closer, and the view keeps opening up with every minute.",
-    },
-    {
-        title: "Mountains, cliffs, and endless sky",
-        images: [
-            "/travel/new-mexico/sandia/sandia3.jpeg",
-            "/travel/new-mexico/sandia/sandia6.jpeg",
-            "/travel/new-mexico/sandia/sandia8.jpeg",
-        ],
-        text: "The views from Sandia Peak are wide and dramatic without feeling overwhelming.",
-    },
-    {
-        title: "A cold, sunny pause at the top",
-        images: [
-            "/travel/new-mexico/sandia/sandia4.jpeg",
-            "/travel/new-mexico/sandia/sandia5.jpeg",
-        ],
-        text: "At the top, the mood is simple — bright sun, cold air, coffee in hand.",
-    },
-];
-
-const whiteSandsSections = [
-    {
-        title: "Soft white dunes",
-        images: ["/travel/new-mexico/white-sands-1.jpeg"],
-        text: "White Sands feels almost unreal...",
-    },
-];
-
-const content = {
-    carlsbad: {
-        title: "Carlsbad Caverns",
-        description: "Underground caves and formations.",
-        sections: carlsbadSections,
-    },
-    whiteSands: {
-        title: "White Sands",
-        description: "Bright dunes and soft landscape.",
-        sections: whiteSandsSections,
-    },
-    sandia: {
-        title: "Sandia Peak Tramway",
-        description: "A calm mountain ride above Albuquerque.",
-        sections: sandiaSections,
-    },
-};
-
-export default function NewMexicoPage() {
-    const [active, setActive] = useState<LocationKey>("sandia");
-
-    const data = content[active];
-
+export default function SandiaPeakMountainsPage() {
     return (
-        <main className="placePage">
-            {/* NAVBAR */}
-            <nav className="stateNavbar">
-                <div className="navLeft">
-                    <span>✈️ New Mexico</span>
+        <main className={styles.locationPage}>
+            <nav className={styles.locationNav}>
+                <div className={styles.navLeft}>
+                    <span className={styles.logo}>✈️</span>
+                    <a className={styles.navBrand} href="/travel/new-mexico">
+                        New Mexico
+                    </a>
                 </div>
 
-                <div className="navCenter">
-                    <button onClick={() => setActive("carlsbad")}>Carlsbad</button>
-                    <button onClick={() => setActive("whiteSands")}>White Sands</button>
-                    <button onClick={() => setActive("sandia")}>Sandia Peak</button>
+                <div className={styles.navCenter}>
+                    <a className={styles.navLink} href="/travel/new-mexico">
+                        Carlsbad
+                    </a>
+                    <a className={styles.navLink} href="/travel/new-mexico">
+                        White Sands
+                    </a>
+                    <a className={`${styles.navLink} ${styles.active}`} href="/travel/new-mexico/sandia-peak-mountains">
+                        Sandia Peak
+                    </a>
+                </div>
+
+                <div className={styles.navRight}>
+                    <a href="/travel">
+                        <button type="button" className={`${styles.navBtn} ${styles.explore}`}>
+                            EXPLORE
+                        </button>
+                    </a>
+
+                    <a href="/">
+                        <button type="button" className={`${styles.navBtn} ${styles.back}`}>
+                            BACK HOME
+                        </button>
+                    </a>
                 </div>
             </nav>
 
-            {/* HERO */}
-            <section className="placeHero">
-                <h1>{data.title}</h1>
-                <p>{data.description}</p>
+            <section
+                className={styles.hero}
+                style={{
+                    backgroundImage: "url('/travel/new-mexico/sandia1.jpeg')",
+                }}
+            >
+                <div className={styles.heroOverlay}>
+                    <p className={styles.eyebrow}>Sandia Peak Tramway</p>
+                    <h1>A quiet ride above Albuquerque.</h1>
+                    <p>
+                        Sandia Peak was one of those stops that felt calm, cold, bright,
+                        and unexpectedly beautiful. The tram ride opened up the mountains
+                        slowly, and the view from the top made the whole day feel still for
+                        a minute.
+                    </p>
+                </div>
             </section>
 
-            {/* CONTENT */}
-            <section className="storySection">
-                {data.sections.map((section, i) => (
-                    <div key={i} className="storyCard">
-                        <div className="images">
-                            {section.images.map((img) => (
-                                <img key={img} src={img} />
-                            ))}
-                        </div>
+            <section className={styles.contentGrid}>
+                <div className={styles.standaloneCard}>
+                    <h2>Quick notes</h2>
+                    <ul>
+                        <li>Best for mountain views, tramway photos, and a relaxed stop.</li>
+                        <li>The tram ride itself is a major part of the experience.</li>
+                        <li>It can feel much colder at the top, even on a sunny day.</li>
+                        <li>Go earlier in the day for clearer views and softer crowds.</li>
+                        <li>Carry sunglasses, a warm layer, water, and comfortable shoes.</li>
+                    </ul>
+                </div>
 
-                        <div>
-                            <h2>{section.title}</h2>
-                            <p>{section.text}</p>
-                        </div>
+                <div className={styles.standaloneCard}>
+                    <h2>The visit</h2>
+                    <p>
+                        The Sandia Peak Tramway felt simple in the best way. No rushed
+                        checklist, no heavy plan, just the ride up, the rocks, the blue sky,
+                        and that wide New Mexico view stretching out below.
+                    </p>
+
+                    <p>
+                        The mountains looked sharp and dramatic from inside the tram, but
+                        the top felt softer — benches, sunlight, coffee, wind, and a view
+                        that made it easy to slow down.
+                    </p>
+
+                    <p>
+                        It was not a loud adventure. It was more of a quiet pause in the
+                        middle of the trip, the kind of place where you take photos, sit for
+                        a bit, and let the view do most of the talking.
+                    </p>
+                </div>
+            </section>
+
+            <section className={styles.gallerySection}>
+                <p className={styles.eyebrow}>Photo dump</p>
+                <h2>Views from the tram and the peak.</h2>
+
+                <div className={styles.galleryGrid}>
+                    {gallery.map((image) => (
+                        <img key={image} src={image} alt="Sandia Peak Tramway view" />
+                    ))}
+                </div>
+            </section>
+
+            <section className={styles.tipsSection}>
+                <p className={styles.eyebrow}>Trip guide</p>
+                <h2>What to know before going</h2>
+
+                <div className={styles.tipsGrid}>
+                    <div className={styles.tipCard}>
+                        <strong>Best time</strong>
+                        Morning to early afternoon is ideal if you want bright views and a
+                        calmer start. Sunset is beautiful too, but it can get busier and
+                        colder.
                     </div>
-                ))}
+
+                    <div className={styles.tipCard}>
+                        <strong>What to carry</strong>
+                        Sunglasses, water, lip balm, a jacket, and shoes with grip. The top
+                        can feel windy and cooler than the city.
+                    </div>
+
+                    <div className={styles.tipCard}>
+                        <strong>Precautions</strong>
+                        Check tram hours before driving there, avoid going too close to
+                        closing time, and be ready for altitude changes if you are sensitive
+                        to them.
+                    </div>
+                </div>
             </section>
-
-            {/* SIMPLE CSS */}
-            <style jsx>{`
-        .placePage {
-          padding: 20px;
-          font-family: sans-serif;
-        }
-
-        .stateNavbar {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 20px;
-        }
-
-        .navCenter button {
-          margin: 0 10px;
-          cursor: pointer;
-        }
-
-        .placeHero {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-
-        .storyCard {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          margin-bottom: 30px;
-        }
-
-        .images img {
-          width: 100%;
-          margin-bottom: 10px;
-        }
-      `}</style>
         </main>
     );
 }
