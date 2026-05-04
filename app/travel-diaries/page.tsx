@@ -78,6 +78,12 @@ export default function TravelDiaries() {
                             if (place === "Texas") {
                                 href = "/travel/Texas";
                             }
+                            if (place === "Utah") {
+                                href = "/travel/Utah";
+                            }
+                            if (place === "Ohio") {
+                                href = "/travel/Ohio";
+                            }
                             return (
                                 <a
                                     key={place}
