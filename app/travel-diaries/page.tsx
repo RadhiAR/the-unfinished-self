@@ -63,7 +63,18 @@ export default function TravelDiaries() {
                             if (place === "Illinois") {
                                 href = "/travel/illinois/chicago";
                             }
-
+                            if (place === "Nevada") {
+                                href = "/travel/Nevada/vegas";
+                            }
+                            if (place === "Colorado") {
+                                href = "/travel/colorado/rocky";
+                            }
+                            if (place === "California") {
+                                href = "/travel/california/SF";
+                            }
+                            if (place === "Newyork") {
+                                href = "/travel/NY/NY2";
+                            }
                             return (
                                 <a
                                     key={place}
