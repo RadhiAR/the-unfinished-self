@@ -70,7 +70,7 @@ export default function TravelDiaries() {
                                 href = "/travel/colorado/rocky";
                             }
                             if (place === "California") {
-                                href = "/travel/california/SF";
+                                href = "/travel/california";
                             }
                             if (place === "New York") {
                                 href = "/travel/NY";
