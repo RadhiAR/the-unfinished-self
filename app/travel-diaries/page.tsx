@@ -72,8 +72,8 @@ export default function TravelDiaries() {
                             if (place === "California") {
                                 href = "/travel/california/SF";
                             }
-                            if (place === "Newyork") {
-                                href = "/travel/NY/NY2";
+                            if (place === "New York") {
+                                href = "/travel/NY";
                             }
                             return (
                                 <a
