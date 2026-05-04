@@ -41,9 +41,6 @@ export default function LosAngelesPage() {
                 </div>
 
                 <div className={styles.navRight}>
-                    <a href="#gallery" className={`${styles.navBtn} ${styles.explore}`}>
-                        EXPLORE
-                    </a>
                     <a href="/travel-diaries" className={`${styles.navBtn} ${styles.back}`}>
                         BACK HOME
                     </a>
