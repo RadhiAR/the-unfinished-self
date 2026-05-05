@@ -79,76 +79,31 @@ export default async function ChaptersPage() {
             A little book wall of stories I write over the weekends — serials,
             chapters, emotions, fiction, and pieces of my world.
           </p>
-
-          <div className="heroNote">
-            <span>New story chapters on weekends</span>
-            <span>Serials • diary • personal fiction</span>
-          </div>
         </section>
 
         <section className="categoryCardsSection">
-          <p className="eyebrow">MY WRITING CATEGORIES</p>
+          <p className="eyebrow">MY WRITINGS</p>
           <h2>Choose your tea</h2>
 
           <div className="categoryCardsGrid">
             <a href="#weekly-series" className="categoryCard">
-              <span>Serial Books</span>
-              <h3>Weekly Series</h3>
+              <span>Books it is</span>
+              <h3>I Dreamed You First : A love that found me</h3>
               <p>
-                My book-style weekly writings — chapters, characters, romance,
-                drama, fiction, and slow-burn worlds.
+                Young, certain, and in love — About the girl who built her whole world around him, and called it home.
               </p>
-              <strong>Open Series →</strong>
+              <strong>Read me →</strong>
             </a>
 
             <a href="#spoiled-tea" className="categoryCard">
               <span>Weekly Diary</span>
               <h3>Spoiled Tea</h3>
               <p>
-                My softer diary corner — personal notes, chaotic thoughts,
-                reflections, feelings, and little life spills.
+                A curated space for thoughts, experiences, and reflections—captured with intent, felt with intensity.
               </p>
-              <strong>Open Diary →</strong>
+              <strong>At your own risk →</strong>
             </a>
           </div>
-        </section>
-
-        <section id="weekly-series" className="categorySection">
-          <div className="categoryHeader">
-            <p className="eyebrow">Category One</p>
-            <h2>Weekly Series</h2>
-          </div>
-
-          {error ? (
-            <div className="emptyState">Couldn’t load weekly series.</div>
-          ) : weeklySeries.length > 0 ? (
-            <div className="bookWall">
-              {weeklySeries.map((book) => (
-                <BookCard key={book.id} book={book} />
-              ))}
-            </div>
-          ) : (
-            <div className="emptyState">No weekly series yet.</div>
-          )}
-        </section>
-
-        <section id="spoiled-tea" className="categorySection">
-          <div className="categoryHeader">
-            <p className="eyebrow">Category Two</p>
-            <h2>Spoiled Tea</h2>
-          </div>
-
-          {error ? (
-            <div className="emptyState">Couldn’t load Spoiled Tea.</div>
-          ) : spoiledTea.length > 0 ? (
-            <div className="bookWall">
-              {spoiledTea.map((book) => (
-                <BookCard key={book.id} book={book} />
-              ))}
-            </div>
-          ) : (
-            <div className="emptyState">No diary entries yet.</div>
-          )}
         </section>
 
         <section className="aboutSerial">
