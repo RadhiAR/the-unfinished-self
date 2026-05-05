@@ -1,283 +1,209 @@
+import "../travel/styles/travel.css";
 import SiteNavbar from "../components/SiteNavbar";
 
 export default function TravelDiaries() {
-    const places = [
-        "Texas",
-        "Washington",
-        "Ohio",
-        "Colorado",
-        "New Mexico",
-        "California",
-        "Arizona",
-        "Utah",
-        "Nevada",
-        "Oklahoma",
-        "New York",
-        "Tennessee",
-        "Illinois",
-    ];
+  const places = [
+    "Texas",
+    "Washington",
+    "Ohio",
+    "Colorado",
+    "New Mexico",
+    "California",
+    "Arizona",
+    "Utah",
+    "Nevada",
+    "Oklahoma",
+    "New York",
+    "Tennessee",
+    "Illinois",
+  ];
 
-    return (
-        <>
-            <main className="travelPage">
-                <SiteNavbar />
+  const travelPartners = [
+    "Airbnb",
+    "Google Maps",
+    "Hilton",
+    "Marriott",
+    "National Parks",
+    "Local Cafés",
+  ];
 
-                {/* ✅ INTRO SECTION */}
-                <section className="travelIntro">
-                    <div className="introText">
-                        <p className="pillText">Travel Diaries</p>
+  const storyTypes = [
+    "City Guides",
+    "Stay Reviews",
+    "Food Stops",
+    "Road Trips",
+    "Weekend Plans",
+    "Photo Diaries",
+  ];
 
-                        <h1>Where every city becomes a little story.</h1>
+  const collabPoints = [
+    "Hotel & stay features",
+    "Destination storytelling",
+    "Food and local experience highlights",
+    "Travel planning notes and guides",
+  ];
 
-                        <p>
-                            A soft little shelf of places, memories, food stops, road chaos,
-                            pretty views, and the cities that shaped pieces of me.
-                        </p>
-                    </div>
+  return (
+    <>
+      <main className="travelPage">
+        <SiteNavbar />
 
-                    <div className="introCard">
-                        <p className="cardTop">Current Map</p>
+        {/* INTRO */}
+        <section className="travelIntro">
+          <div className="introText">
+            <p className="pillText">Muse & Miles</p>
 
-                        <h2>Places I’ve loved, lived, and wandered through.</h2>
+            <h1>Where every city becomes a little story.</h1>
 
-                        <p>
-                            From Texas skies to California sunsets — every stop gets its own
-                            tiny chapter.
-                        </p>
-                    </div>
-                </section>
+            <p>
+              A soft, modern travel space for places, stays, food stops, road
+              chaos, pretty views, and the moments that make a trip worth
+              remembering.
+            </p>
 
-                {/* ✅ PLACES SECTION */}
-                <section className="travelHero">
-                    <p className="eyebrow">Choose a place</p>
+            <div className="introActions">
+              <a href="#places" className="primaryCta">
+                Browse Places
+              </a>
+              <a href="#collabs" className="secondaryCta">
+                Work With This Blog
+              </a>
+            </div>
+          </div>
 
-                    <h1>Places. Memories. Little chaos.</h1>
+          <div className="introCard">
+            <p className="cardTop">Current Map</p>
 
-                    <div className="placesGrid">
-                        {places.map((place) => {
-                            const slug = place.toLowerCase().replace(/\s+/g, "-");
+            <h2>Places I’ve loved, lived, and wandered through.</h2>
 
-                            // 🔥 FIXED ROUTING
-                            let href = `/travel/${slug}`;
+            <p>
+              From Texas skies to California sunsets — every stop gets its own
+              small chapter, practical notes, and little memories.
+            </p>
+          </div>
+        </section>
 
-                            if (place === "Illinois") {
-                                href = "/travel/illinois/chicago";
-                            }
-                            if (place === "Nevada") {
-                                href = "/travel/Nevada/vegas";
-                            }
-                            if (place === "Colorado") {
-                                href = "/travel/colorado/rocky";
-                            }
-                            if (place === "California") {
-                                href = "/travel/california";
-                            }
-                            if (place === "New York") {
-                                href = "/travel/NY";
-                            }
-                            if (place === "Texas") {
-                                href = "/travel/Texas";
-                            }
-                            if (place === "Utah") {
-                                href = "/travel/Utah";
-                            }
-                            if (place === "Ohio") {
-                                href = "/travel/Ohio";
-                            }
-                            if (place === "Washington") {
-                                href = "/travel/Washington";
-                            }
-                            return (
-                                <a
-                                    key={place}
-                                    href={href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="placeCard"
-                                >
-                                    {place}
-                                </a>
-                            );
-                        })}
-                    </div>
-                </section>
+        {/* BLOG PILLARS */}
+        <section className="blogPillars">
+          <p className="eyebrow">What you’ll find here</p>
+          <h2>Travel stories with useful details.</h2>
 
-                {/* 🔥 MOOD SECTION */}
-                <section className="moodSection">
-                    <p className="eyebrow">The mood</p>
+          <div className="pillarGrid">
+            {storyTypes.map((type) => (
+              <div className="pillarCard" key={type}>
+                {type}
+              </div>
+            ))}
+          </div>
+        </section>
 
-                    <h2>
-                        “Journeys that are rushed, locations chosen at the last minute… but somehow end up meaning the most.”
-                    </h2>
+        {/* PLACES */}
+        <section id="places" className="travelHero">
+          <p className="eyebrow">Choose a place</p>
 
-                    <p></p>
-                </section>
-            </main>
+          <h1>Places. Memories. Little chaos.</h1>
 
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: `
-          * {
-            box-sizing: border-box;
-          }
+          <div className="placesGrid">
+            {places.map((place) => {
+              const slug = place.toLowerCase().replace(/\s+/g, "-");
 
-          body {
-            margin: 0;
-          }
+              let href = `/travel/${slug}`;
 
-          .travelPage {
-            min-height: 100vh;
-            font-family: Georgia, "Times New Roman", serif;
-            background:
-              radial-gradient(circle at 10% 20%, rgba(255, 214, 233, 0.75), transparent 35%),
-              radial-gradient(circle at 90% 20%, rgba(223, 243, 255, 0.8), transparent 35%),
-              linear-gradient(135deg, #fff0f7, #f8fbff);
-            padding: 1px 20px 60px;
-          }
+              if (place === "Illinois") {
+                href = "/travel/illinois/chicago";
+              }
+              if (place === "Nevada") {
+                href = "/travel/Nevada/vegas";
+              }
+              if (place === "Colorado") {
+                href = "/travel/colorado/rocky";
+              }
+              if (place === "California") {
+                href = "/travel/california";
+              }
+              if (place === "New York") {
+                href = "/travel/NY";
+              }
+              if (place === "Texas") {
+                href = "/travel/Texas";
+              }
+              if (place === "Utah") {
+                href = "/travel/Utah";
+              }
+              if (place === "Ohio") {
+                href = "/travel/Ohio";
+              }
+              if (place === "Washington") {
+                href = "/travel/Washington";
+              }
 
-          .travelIntro {
-            width: 100%;
-            max-width: 1180px;
-            margin: 40px auto 0;
-            padding: 60px 48px;
-            border-radius: 42px;
-            display: grid;
-            grid-template-columns: 1fr 0.7fr;
-            gap: 40px;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.66);
-            border: 1px solid rgba(241, 196, 214, 0.9);
-            box-shadow: 0 30px 80px rgba(184, 91, 133, 0.16);
-            backdrop-filter: blur(14px);
-          }
+              return (
+                <a
+                  key={place}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="placeCard"
+                >
+                  {place}
+                </a>
+              );
+            })}
+          </div>
+        </section>
 
-          .pillText {
-            display: inline-block;
-            margin: 0 0 22px;
-            padding: 10px 20px;
-            border-radius: 999px;
-            background: #ffd6e9;
-            color: #b85b85;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-          }
+        {/* BRANDS / TOOLS */}
+        <section className="brandStack">
+          <div className="brandText">
+            <p className="eyebrow">Travel stack</p>
+            <h2>Brands, stays, and tools used along the way.</h2>
+            <p>
+              From planning routes to booking stays, these are the platforms and
+              travel names that appear across the journey — used for stays,
+              maps, comfort, convenience, and discovery.
+            </p>
+          </div>
 
-          .introText h1 {
-            margin: 0;
-            font-size: clamp(40px, 5vw, 72px);
-            line-height: 1;
-            letter-spacing: -0.05em;
-            color: #2f1d26;
-          }
+          <div className="brandGrid">
+            {travelPartners.map((brand) => (
+              <div className="brandCard" key={brand}>
+                {brand}
+              </div>
+            ))}
+          </div>
+        </section>
 
-          .introText p:last-child {
-            margin-top: 24px;
-            font-size: 17px;
-            line-height: 1.7;
-            color: #6f5361;
-            max-width: 560px;
-          }
+        {/* COLLAB SECTION */}
+        <section id="collabs" className="collabSection">
+          <div className="collabLeft">
+            <p className="eyebrow">For brands & stays</p>
+            <h2>Built for storytelling, not just posting.</h2>
+            <p>
+              Muse & Miles is shaped for travel stories that feel personal,
+              useful, and visually memorable — the kind of content that helps a
+              place, stay, or experience feel worth entering.
+            </p>
+          </div>
 
-          .introCard {
-            padding: 36px;
-            border-radius: 30px;
-            background:
-              radial-gradient(circle at top left, rgba(255, 214, 233, 0.6), transparent 42%),
-              linear-gradient(145deg, #fff7fb, #ffffff, #eef8ff);
-            border: 1px solid rgba(241, 196, 214, 0.85);
-            box-shadow: 0 20px 50px rgba(184, 91, 133, 0.14);
-          }
+          <div className="collabRight">
+            {collabPoints.map((item) => (
+              <div className="collabItem" key={item}>
+                {item}
+              </div>
+            ))}
+          </div>
+        </section>
 
-          .cardTop {
-            margin-bottom: 14px;
-            font-size: 12px;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: #b85b85;
-            font-weight: 900;
-          }
+        {/* MOOD */}
+        <section className="moodSection">
+          <p className="eyebrow">The mood</p>
 
-          .introCard h2 {
-            margin: 0;
-            font-size: clamp(26px, 3vw, 40px);
-            line-height: 1.1;
-            color: #2f1d26;
-          }
-
-          .moodSection {
-            max-width: 1180px;
-            margin: 40px auto 0;
-            padding: 64px 40px;
-            text-align: center;
-            border-radius: 42px;
-            background:
-              linear-gradient(135deg, #ffd6e9, #fff0f7, #dff3ff);
-            border: 1px solid rgba(255,255,255,0.8);
-            box-shadow: 0 28px 70px rgba(184, 91, 133, 0.18);
-          }
-
-          .moodSection h2 {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: clamp(36px, 5vw, 64px);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            color: #2f1d26;
-          }
-
-          .travelHero {
-            width: 100%;
-            max-width: 1180px;
-            margin: 30px auto 0;
-            padding: 56px 40px;
-            border-radius: 40px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 30px 80px rgba(184, 91, 133, 0.18);
-          }
-
-          .eyebrow {
-            margin: 0 0 16px;
-            font-size: 12px;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: #b85b85;
-            font-weight: 800;
-          }
-
-          .placesGrid {
-            margin-top: 46px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-          }
-
-          .placeCard {
-            padding: 20px;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.9);
-            font-weight: 800;
-            color: #6d3650;
-            box-shadow: 0 12px 28px rgba(184, 91, 133, 0.12);
-            text-decoration: none;
-            display: block;
-          }
-
-          @media (max-width: 900px) {
-            .travelIntro {
-              grid-template-columns: 1fr;
-            }
-
-            .placesGrid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-        `,
-                }}
-            />
-        </>
-    );
+          <h2>
+            “Journeys that are rushed, locations chosen at the last minute… but
+            somehow end up meaning the most.”
+          </h2>
+        </section>
+      </main>
+    </>
+  );
 }

@@ -1,31 +1,31 @@
 export default function SiteNavbar() {
-    return (
-        <>
-            <nav className="siteNavbar">
-                <a href="/" className="navLogo">
-                    <span className="logoIcon">✈️</span>
-                    <span>Travel Diaries</span>
-                </a>
+  return (
+    <>
+      <nav className="siteNavbar">
+        <a href="/" className="navLogo">
+          <span className="logoIcon">✈️</span>
+          <span>Muse & Miles</span>
+        </a>
 
-                <div className="navLinks">
-                    <a href="/">Home</a>
-                    <a href="/travel-diaries">Places</a>
-                    <a href="/life-lens">Stories</a>
-                </div>
+        <div className="navLinks">
+          <a href="/">Home</a>
+          <a href="/travel-diaries">Places</a>
+          <a href="/life-lens">Stories</a>
+        </div>
 
-                <div className="navActions">
-                    <a href="/travel-diaries" className="navBtn softBtn">
-                        Explore
-                    </a>
-                    <a href="/" className="navBtn pinkBtn">
-                        Back Home
-                    </a>
-                </div>
-            </nav>
+        <div className="navActions">
+          <a href="/travel-diaries" className="navBtn softBtn">
+            Explore
+          </a>
+          <a href="/" className="navBtn pinkBtn">
+            Back Home
+          </a>
+        </div>
+      </nav>
 
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
               .siteNavbar {
                 width: min(1180px, calc(100% - 48px));
                 margin: 34px auto 0;
@@ -143,8 +143,8 @@ export default function SiteNavbar() {
                 }
               }
             `,
-                }}
-            />
-        </>
-    );
+        }}
+      />
+    </>
+  );
 }

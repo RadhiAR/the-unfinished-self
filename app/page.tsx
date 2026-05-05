@@ -6,7 +6,7 @@ export default function Home() {
       tag: "Founder Project",
     },
     {
-      title: "Dora's Hidden Atlas",
+      title: "Muse & Miles",
       desc: "A lens on travel, culture, and modern experiences—capturing places, stories, and everything in between.",
       tag: "The Travel Edit",
     },
@@ -109,31 +109,31 @@ export default function Home() {
                   href={
                     project.title === "Loomeira"
                       ? "/loomeira"
-                      : project.title === "Dora's Hidden Atlas"
+                      : project.title === "Muse & Miles"
                         ? "/travel-diaries"
                         : project.title === "The Weekly Tea"
                           ? "/life-lens"
                           : "/"
                   }
                   target={
-                    project.title === "Dora's Hidden Atlas" ||
+                    project.title === "Muse & Miles" ||
                       project.title === "The Weekly Tea"
                       ? "_blank"
                       : "_self"
                   }
                   rel={
-                    project.title === "Dora's Hidden Atlas" ||
+                    project.title === "Muse & Miles" ||
                       project.title === "The Weekly Tea"
                       ? "noopener noreferrer"
                       : undefined
                   }
                 >
                   {project.title === "The Weekly Tea"
-                    ? "Get the Tea →"
-                    : project.title === "Dora's Hidden Atlas"
+                    ? "Get some Tea →"
+                    : project.title === "Muse & Miles"
                       ? "Enter the Atlas →"
                       : project.title === "Loomeira"
-                        ? "Enter Loomeira →"
+                        ? "Discover Loomeira →"
                         : "Explore →"}
                 </a>
               </article>
