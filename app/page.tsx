@@ -131,7 +131,7 @@ export default function Home() {
                   {project.title === "The Weekly Tea"
                     ? "Get some Tea →"
                     : project.title === "Muse & Miles"
-                      ? "Enter the Atlas →"
+                      ? "Run the Miles here →"
                       : project.title === "Loomeira"
                         ? "Discover Loomeira →"
                         : "Explore →"}

@@ -3,8 +3,15 @@ export default function SiteNavbar() {
     <>
       <nav className="siteNavbar">
         <a href="/" className="navLogo">
-          <span className="logoIcon">✈️</span>
-          <span>Muse & Miles</span>
+          <span className="logoIcon">
+            <img
+              src="/musemiles.png"
+              alt="Muse & Miles"
+              className="logoWatermark"
+            />
+          </span>
+
+          <span className="brandText">Muse & Miles</span>
         </a>
 
         <div className="navLinks">
@@ -42,29 +49,61 @@ export default function SiteNavbar() {
                 position: relative;
                 z-index: 10;
               }
-  
+
               .navLogo {
                 display: inline-flex;
                 align-items: center;
-                gap: 10px;
+                gap: 14px;
                 color: #6d3650;
                 font-weight: 900;
-                font-size: 18px;
                 text-decoration: none;
                 white-space: nowrap;
               }
-  
+
+              /* 🔥 BIGGER LOGO CONTAINER */
               .logoIcon {
-                width: 42px;
-                height: 42px;
+                width: 60px;
+                height: 60px;
                 border-radius: 999px;
-                display: inline-flex;
+              
+                display: flex;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, #ffd6e9, #dff3ff);
-                box-shadow: 0 10px 24px rgba(184, 91, 133, 0.16);
+              
+                /* 🔥 softer, premium background */
+                background: radial-gradient(circle at 30% 30%, #fff4f9, #f4f8ff);
+              
+                box-shadow: 0 10px 26px rgba(184, 91, 133, 0.14);
+              
+                overflow: hidden;
               }
-  
+
+              /* 🔥 REAL WATERMARK FEEL */
+              .logoWatermark {
+                width: 100%;   /* 🔥 breathing space */
+                height: 100%;
+                object-fit: contain;
+              
+                opacity: 1;
+              
+                /* 🔥 REMOVE harsh darkening */
+                filter:
+                  contrast(1.15)
+                  saturate(1.1);
+              
+                transition: all 0.3s ease;
+              }
+
+              .navLogo:hover .logoWatermark {
+                transform: scale(1.08);
+              }
+
+              /* 🔥 BRAND TEXT POLISH */
+              .brandText {
+                font-size: 20px;
+                letter-spacing: -0.01em;
+              }
+
               .navLinks {
                 display: flex;
                 align-items: center;
@@ -74,23 +113,23 @@ export default function SiteNavbar() {
                 font-weight: 900;
                 font-size: 15px;
               }
-  
+
               .navLinks a {
                 text-decoration: none;
                 color: inherit;
                 transition: color 0.2s ease;
               }
-  
+
               .navLinks a:hover {
                 color: #d9468c;
               }
-  
+
               .navActions {
                 display: flex;
                 align-items: center;
                 gap: 12px;
               }
-  
+
               .navBtn {
                 min-width: 132px;
                 padding: 14px 22px;
@@ -103,23 +142,23 @@ export default function SiteNavbar() {
                 text-transform: uppercase;
                 transition: all 0.25s ease;
               }
-  
+
               .softBtn {
                 color: white;
                 background: linear-gradient(135deg, #c084fc, #f9a8d4);
                 box-shadow: 0 14px 30px rgba(192, 132, 252, 0.24);
               }
-  
+
               .pinkBtn {
                 color: white;
                 background: linear-gradient(135deg, #d9468c, #ee79b0, #7fc8ff);
                 box-shadow: 0 14px 30px rgba(217, 70, 140, 0.28);
               }
-  
+
               .navBtn:hover {
                 transform: translateY(-3px);
               }
-  
+
               @media (max-width: 900px) {
                 .siteNavbar {
                   width: calc(100% - 28px);
@@ -127,17 +166,17 @@ export default function SiteNavbar() {
                   flex-direction: column;
                   border-radius: 30px;
                 }
-  
+
                 .navLinks {
                   flex-wrap: wrap;
                   gap: 18px;
                 }
-  
+
                 .navActions {
                   width: 100%;
                   flex-direction: column;
                 }
-  
+
                 .navBtn {
                   width: 100%;
                 }
