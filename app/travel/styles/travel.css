@@ -17,17 +17,22 @@ a {
 
 .travelPage {
     --content-width: 1180px;
+    --card-bg: rgba(255, 255, 255, 0.72);
+    --border: rgba(241, 196, 214, 0.85);
+    --text: #2f1d26;
+    --muted: #6f5361;
+    --pink: #d9468c;
+
     min-height: 100vh;
     font-family: Georgia, "Times New Roman", serif;
-    color: #2f1d26;
+    color: var(--text);
     background:
-        radial-gradient(circle at 10% 20%, rgba(255, 214, 233, 0.75), transparent 35%),
-        radial-gradient(circle at 90% 20%, rgba(223, 243, 255, 0.8), transparent 35%),
+        radial-gradient(circle at 10% 18%, rgba(255, 214, 233, 0.78), transparent 34%),
+        radial-gradient(circle at 90% 22%, rgba(223, 243, 255, 0.86), transparent 34%),
         linear-gradient(135deg, #fff0f7, #f8fbff);
-    padding: 1px 20px 70px;
+    padding: 34px 20px 80px;
 }
 
-/* 🔥 ALIGNMENT SYSTEM */
 .travelIntro,
 .blogPillars,
 .travelHero,
@@ -36,167 +41,272 @@ a {
 .moodSection {
     width: 100%;
     max-width: var(--content-width);
-    margin-left: auto;
-    margin-right: auto;
+    margin: 32px auto 0;
 }
 
-/* INTRO */
-.travelIntro {
-    margin-top: 40px;
-    padding: 60px 48px;
-    border-radius: 42px;
-    display: grid;
-    grid-template-columns: 1fr 0.72fr;
-    gap: 40px;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.66);
-    border: 1px solid rgba(241, 196, 214, 0.9);
-    box-shadow: 0 30px 80px rgba(184, 91, 133, 0.16);
+.travelIntro,
+.blogPillars,
+.travelHero,
+.brandStack,
+.collabSection,
+.moodSection {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 38px;
+    box-shadow: 0 24px 70px rgba(184, 91, 133, 0.12);
     backdrop-filter: blur(14px);
 }
 
-.pillText {
-    margin-bottom: 22px;
+.travelIntro {
+    margin-top: 34px;
+    padding: 58px 48px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.75fr);
+    gap: 48px;
+    align-items: center;
+}
+
+.introText,
+.introCard,
+.brandText,
+.collabLeft {
+    min-width: 0;
+}
+
+.pillText,
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 22px;
     padding: 10px 20px;
     border-radius: 999px;
     background: #ffd6e9;
     color: #b85b85;
     font-size: 12px;
     font-weight: 900;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
 }
 
+.introText h1,
+.travelHero h1,
+.blogPillars h2,
+.brandText h2,
+.collabLeft h2,
+.moodSection h2 {
+    margin: 0;
+    letter-spacing: -0.045em;
+    color: var(--text);
+}
+
 .introText h1 {
-    font-size: clamp(40px, 5vw, 72px);
-    line-height: 1;
+    max-width: 720px;
+    font-size: clamp(46px, 5.4vw, 78px);
+    line-height: 0.96;
 }
 
-.introText p {
-    margin-top: 20px;
-    color: #6f5361;
+.introText p:not(.pillText),
+.introCard p,
+.brandText p,
+.collabLeft p {
+    margin: 20px 0 0;
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.35;
 }
 
-/* CTA */
 .introActions {
-    margin-top: 30px;
+    margin-top: 32px;
     display: flex;
+    flex-wrap: wrap;
     gap: 14px;
 }
 
-.primaryCta {
-    padding: 14px 24px;
+.primaryCta,
+.secondaryCta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 14px 26px;
     border-radius: 999px;
+    font-weight: 900;
+    font-size: 17px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primaryCta {
     background: linear-gradient(135deg, #d9468c, #ee79b0, #7fc8ff);
     color: white;
-    font-weight: 900;
+    box-shadow: 0 14px 34px rgba(217, 70, 140, 0.26);
 }
 
 .secondaryCta {
-    padding: 14px 24px;
-    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
     border: 1px solid #e7a5c1;
 }
 
-/* BLOG PILLARS */
+.primaryCta:hover,
+.secondaryCta:hover,
+.placeCard:hover,
+.pillarCard:hover,
+.brandCard:hover,
+.collabItem:hover {
+    transform: translateY(-2px);
+}
+
+.introCard {
+    padding: 36px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.58);
+}
+
+.cardTop {
+    margin: 0 0 18px !important;
+    color: var(--text) !important;
+    font-weight: 800;
+    font-size: 16px !important;
+}
+
+.introCard h2 {
+    margin: 0;
+    max-width: 430px;
+    font-size: clamp(26px, 2.4vw, 34px);
+    line-height: 1.05;
+}
+
 .blogPillars {
-    margin-top: 30px;
-    padding: 40px;
-    border-radius: 40px;
-    background: rgba(255, 255, 255, 0.6);
+    padding: 44px 40px 48px;
+}
+
+.blogPillars h2 {
+    font-size: clamp(30px, 3vw, 42px);
+    line-height: 1.05;
 }
 
 .pillarGrid {
+    margin-top: 26px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.pillarCard,
+.placeCard,
+.brandCard,
+.collabItem {
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 16px 36px rgba(47, 29, 38, 0.05);
 }
 
 .pillarCard {
-    padding: 20px;
-    border-radius: 20px;
-    background: white;
+    min-height: 70px;
+    padding: 22px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.travelHero {
+    padding: 58px 48px;
     text-align: center;
 }
 
-/* PLACES */
-.travelHero {
-    margin-top: 30px;
-    padding: 50px;
-    border-radius: 40px;
-    background: rgba(255, 255, 255, 0.6);
-    text-align: center;
+.travelHero h1 {
+    max-width: 940px;
+    margin: 0 auto;
+    font-size: clamp(54px, 7vw, 104px);
+    line-height: 0.92;
 }
 
 .placesGrid {
-    margin-top: 30px;
+    margin-top: 42px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
 }
 
 .placeCard {
+    min-height: 72px;
     padding: 20px;
-    border-radius: 20px;
-    background: white;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    font-size: 19px;
+    font-weight: 800;
 }
 
-/* BRANDS */
-.brandStack {
-    margin-top: 30px;
-    padding: 50px;
-    border-radius: 40px;
+.brandStack,
+.collabSection {
+    padding: 56px 48px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+    gap: 58px;
+    align-items: center;
+}
+
+.brandText h2,
+.collabLeft h2 {
+    max-width: 560px;
+    font-size: clamp(30px, 3.2vw, 44px);
+    line-height: 1.02;
 }
 
 .brandGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
 }
 
 .brandCard {
-    padding: 20px;
-    border-radius: 20px;
-    background: white;
+    min-height: 72px;
+    padding: 22px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    font-size: 19px;
+    font-weight: 800;
 }
 
-/* COLLAB */
-.collabSection {
-    margin-top: 30px;
-    padding: 50px;
-    border-radius: 40px;
+.collabRight {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 16px;
 }
 
 .collabItem {
-    padding: 20px;
-    border-radius: 20px;
-    background: white;
+    min-height: 66px;
+    padding: 22px 26px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 800;
 }
 
-/* MOOD */
 .moodSection {
-    margin-top: 30px;
-    padding: 60px;
-    border-radius: 40px;
+    padding: 70px 54px;
     text-align: center;
-    background: linear-gradient(135deg, #ffd6e9, #fff0f7, #dff3ff);
+    background: linear-gradient(135deg, #ffd6e9, #fff0f7 48%, #dff3ff);
 }
 
 .moodSection h2 {
-    font-size: clamp(36px, 5vw, 64px);
+    max-width: 980px;
+    margin: 0 auto;
+    font-size: clamp(38px, 5.4vw, 76px);
+    line-height: 1.05;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
     .travelIntro,
     .brandStack,
@@ -204,9 +314,60 @@ a {
         grid-template-columns: 1fr;
     }
 
-    .placesGrid,
+    .placesGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pillarGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .travelPage {
+        padding: 20px 14px 60px;
+    }
+
+    .travelIntro,
+    .blogPillars,
+    .travelHero,
+    .brandStack,
+    .collabSection,
+    .moodSection {
+        margin-top: 22px;
+        border-radius: 28px;
+    }
+
+    .travelIntro,
+    .blogPillars,
+    .travelHero,
+    .brandStack,
+    .collabSection,
+    .moodSection {
+        padding: 32px 22px;
+    }
+
+    .introText h1,
+    .travelHero h1 {
+        font-size: 42px;
+    }
+
+    .introActions {
+        flex-direction: column;
+    }
+
+    .primaryCta,
+    .secondaryCta {
+        width: 100%;
+    }
+
     .pillarGrid,
+    .placesGrid,
     .brandGrid {
         grid-template-columns: 1fr;
+    }
+
+    .moodSection h2 {
+        font-size: 34px;
     }
 }
