@@ -2,30 +2,28 @@ export default function Home() {
   const projects = [
     {
       title: "Loomeira",
-      desc: "A handmade world for custom crafts, creativity, and community.",
+      desc: "A platform for handmade design, custom creations, and thoughtful craftsmanship—bringing creativity and community together.",
       tag: "Founder Project",
     },
     {
-      title: "Travel Diaries",
-      desc: "Places, memories, food, little chaos, and everything in between.",
-      tag: "Try the New Travel AI",
+      title: "Dora's Hidden Atlas",
+      desc: "A lens on travel, culture, and modern experiences—capturing places, stories, and everything in between.",
+      tag: "The Travel Edit",
     },
     {
       title: "The Weekly Tea",
-      desc: "Stories, drama, chaos — served fresh every week. Yours, mine, everyone’s.",
+      desc: "Stories, thoughts, and a little chaos—shared weekly, across perspectives and moments that stay with you.",
       tag: "Weekly Story Drops",
     },
   ];
 
   const interests = [
     "Travel",
-    "Fashion",
-    "Building",
-    "Loomeira",
-    "Food",
     "Design",
     "Stories",
-    "Love",
+    "Fashion",
+    "Food & Places",
+    "Building Things",
   ];
 
   return (
@@ -35,17 +33,17 @@ export default function Home() {
           <div className="heroBg" />
           <div className="heroOverlay" />
 
-          <div className="heroContent">
+          <div className="heroContent pageBlock">
             <p className="eyebrow">Personal Universe of</p>
 
             <h2>THE UNFINISHED S(H)ELF</h2>
 
             <p className="tagline">
-              She loves to travel, lives in pink, follows her heart… 😉 and fully believes she’s a Disney princess 👸✨
+              A life in motion — shaped by travel ✈️, stories 📖, and everything in between ✨
             </p>
 
             <p className="intro">
-              A serene corner of the internet 🌙✨ where my stories 📖, travels ✈️, dreams 🌟, and ideas 💭 flow together. Somewhere between quiet thoughts and lines of code 💻, I try to make sense of things—building, exploring, and growing in my own way. Here, I capture little moments, small discoveries 🦋, and every version of myself still unfolding, one day at a time 💫.
+              A space where travel ✈️, stories 📖, and ideas 💭 come together. Built around curiosity 🌍, movement, and growth, it captures moments, places, and perspectives as they unfold—quietly evolving, one chapter at a time ✨
             </p>
 
             <div className="buttonRow">
@@ -68,19 +66,11 @@ export default function Home() {
 
           <div className="aboutRight">
             <p>
-              I don’t believe in being a finished product. I’m constantly building, dreaming ✨,
-              designing 🎨, and exploring 🌍—whether it’s through travel ✈️, creative projects 💡,
-              or the beauty of everyday moments. I follow what resonates with me, always staying
-              true to my heart ❤️ and evolving along the way.
+              Not a finished story, but one constantly evolving. Built around curiosity, creativity, and movement, this space reflects a life shaped by travel ✈️, ideas 💭, and the beauty of everyday moments ✨. It’s a quiet exploration of what feels meaningful—where inspiration comes from, where it leads, and how it changes along the way.
             </p>
 
             <p>
-              This space is more than just a portfolio; it’s a reflection of my journey.
-              A dynamic collection of my work 📚, ideas 💭, travels 🌎, and passions 🌸, all woven together
-              into a tapestry of soft chaos and ambition 💫. Here, I share the stories I’m writing
-              for myself and the versions of me that are always unfolding. Every project and
-              experience is a new chapter of discovery 📖, one that I hope will inspire, connect,
-              and grow with you.
+              More than a portfolio, it holds pieces of work, thoughts, and experiences—woven together as a reflection of growth, direction, and everything still taking shape. Some parts are intentional, others still unfolding, but all of it moves forward with purpose. Each project, place, and moment adds to the story, unfolding one chapter at a time 📖.
             </p>
 
             <a
@@ -89,7 +79,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="resumeBtn"
             >
-              View My Resume →
+              View My Work →
             </a>
           </div>
         </section>
@@ -97,17 +87,17 @@ export default function Home() {
         <section id="projects" className="projectsSection">
           <div className="sectionTitle pageBlock">
             <p className="eyebrow">Projects & Pieces</p>
-            <h2>Things I’m building</h2>
+            <h2>Work & Worlds</h2>
           </div>
 
           <div className="projectGrid pageBlock">
             {projects.map((project) => (
               <article
                 className={`projectCard ${project.title === "Loomeira"
-                    ? "featuredCard"
-                    : project.title === "The Weekly Tea"
-                      ? "writingCard"
-                      : ""
+                  ? "featuredCard"
+                  : project.title === "The Weekly Tea"
+                    ? "writingCard"
+                    : ""
                   }`}
                 key={project.title}
               >
@@ -119,22 +109,32 @@ export default function Home() {
                   href={
                     project.title === "Loomeira"
                       ? "/loomeira"
-                      : project.title === "Travel Diaries"
+                      : project.title === "Dora's Hidden Atlas"
                         ? "/travel-diaries"
-                        : "/life-lens"
+                        : project.title === "The Weekly Tea"
+                          ? "/life-lens"
+                          : "/"
                   }
                   target={
-                    project.title === "Travel Diaries" || project.title === "The Weekly Tea"
+                    project.title === "Dora's Hidden Atlas" ||
+                      project.title === "The Weekly Tea"
                       ? "_blank"
                       : "_self"
                   }
                   rel={
-                    project.title === "Travel Diaries" || project.title === "The Weekly Tea"
+                    project.title === "Dora's Hidden Atlas" ||
+                      project.title === "The Weekly Tea"
                       ? "noopener noreferrer"
                       : undefined
                   }
                 >
-                  {project.title === "The Weekly Tea" ? "Get the Tea →" : "Explore →"}
+                  {project.title === "The Weekly Tea"
+                    ? "Get the Tea →"
+                    : project.title === "Dora's Hidden Atlas"
+                      ? "Enter the Atlas →"
+                      : project.title === "Loomeira"
+                        ? "Enter Loomeira →"
+                        : "Explore →"}
                 </a>
               </article>
             ))}
@@ -142,7 +142,7 @@ export default function Home() {
         </section>
 
         <section className="interestsSection pageBlock">
-          <p className="eyebrow">Interests</p>
+          <p className="eyebrow">What Shapes This Space</p>
           <h2>Pink things. New cities. Big dreams.</h2>
 
           <div className="interestGrid">
@@ -182,6 +182,8 @@ export default function Home() {
             }
 
             .page {
+              --content-width: 1180px;
+              --page-padding: 24px;
               min-height: 100vh;
               overflow-x: hidden;
               color: #35212b;
@@ -193,8 +195,7 @@ export default function Home() {
             }
 
             .pageBlock {
-              width: 100%;
-              max-width: 1180px;
+              width: min(calc(100% - 48px), var(--content-width));
               margin-left: auto;
               margin-right: auto;
             }
@@ -206,7 +207,7 @@ export default function Home() {
               align-items: center;
               justify-content: center;
               text-align: center;
-              padding: 100px 24px;
+              padding: 100px 0;
               overflow: hidden;
             }
 
@@ -232,7 +233,8 @@ export default function Home() {
             .heroContent {
               position: relative;
               z-index: 2;
-              max-width: 1040px;
+              width: min(calc(81% - 48px), var(--content-width));
+              max-width: var(--content-width);
               padding: 64px 52px;
               border-radius: 46px;
               background: rgba(255, 255, 255, 0.68);
@@ -310,7 +312,7 @@ export default function Home() {
             }
 
             .aboutSection {
-              padding: 96px 24px 88px;
+              padding: 96px 0 88px;
               display: grid;
               grid-template-columns: 0.9fr 1.1fr;
               gap: 28px;
@@ -378,7 +380,7 @@ export default function Home() {
             }
 
             .projectsSection {
-              padding: 96px 24px;
+              padding: 96px 0;
               background: linear-gradient(180deg, #ffffff, #fff7fb);
               border-top: 1px solid rgba(241, 196, 214, 0.55);
               border-bottom: 1px solid rgba(241, 196, 214, 0.55);
@@ -391,8 +393,9 @@ export default function Home() {
 
             .projectGrid {
               display: grid;
-              grid-template-columns: repeat(3, 1fr);
+              grid-template-columns: repeat(3, minmax(0, 1fr));
               gap: 24px;
+              align-items: stretch;
             }
 
             .projectCard {
@@ -499,6 +502,7 @@ export default function Home() {
               display: inline-flex;
               align-items: center;
               transition: all 0.25s ease;
+              margin-top: auto;
             }
 
             .projectCard a:hover {
@@ -522,7 +526,7 @@ export default function Home() {
             .interestGrid {
               margin-top: 42px;
               display: grid;
-              grid-template-columns: repeat(4, 1fr);
+              grid-template-columns: repeat(3, minmax(0, 1fr));
               gap: 16px;
             }
 
@@ -563,6 +567,10 @@ export default function Home() {
             }
 
             @media (max-width: 900px) {
+              .pageBlock {
+                width: min(calc(100% - 36px), var(--content-width));
+              }
+
               .aboutSection,
               .projectGrid,
               .interestGrid {
@@ -570,7 +578,7 @@ export default function Home() {
               }
 
               .hero {
-                padding: 72px 18px;
+                padding: 72px 0;
               }
 
               .heroContent {
@@ -579,11 +587,13 @@ export default function Home() {
 
               .aboutSection,
               .projectsSection {
-                padding: 78px 18px;
+                padding-top: 78px;
+                padding-bottom: 78px;
               }
 
               .interestsSection {
-                margin: 70px 18px;
+                margin-top: 70px;
+                margin-bottom: 70px;
                 padding: 48px 24px;
               }
 
