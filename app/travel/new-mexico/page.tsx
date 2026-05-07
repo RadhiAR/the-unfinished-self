@@ -13,43 +13,43 @@ type StorySection = {
 
 const carlsbadSections: StorySection[] = [
     {
-        title: "The entrance into another world",
+        title: "The road into New Mexico",
         images: [
             "/travel/new-mexico/carlsbad-11.jpeg",
             "/travel/new-mexico/carlsbad-9.jpeg",
+        ],
+        text: "We left Austin the evening before and slowly made our way toward Hobbs, New Mexico — a long desert road trip that shifted from busy highways into quiet open roads and endless sky. Along the way, we stopped through Llano, San Angelo, Midland, and Big Spring to charge the Tesla before crossing into Hobbs. One thing worth planning ahead for: Hobbs currently doesn’t have a Tesla Supercharger, so it’s much easier to fully charge before arriving there. Carlsbad does have Superchargers again, which makes the return drive much smoother. The drive itself became part of the experience — soft desert light, quiet gas stations, and the feeling of slowly getting farther away from routine.",
+    },
+    {
+        title: "The entrance into another world",
+        images: [
+            "/travel/new-mexico/carlsbad-7.jpeg",
+            "/travel/new-mexico/carlsbad-1.jpeg",
+            "/travel/new-mexico/carlsbad-4.jpeg",
         ],
         text: "Carlsbad Caverns starts above ground, surrounded by the dry New Mexico landscape and wide open sky. The entrance area feels calm at first, but once you begin going down, the space slowly changes. The light fades, the air gets cooler, and the cave starts to feel much larger than expected. It begins as an easy walk, but quickly turns into a deeper underground experience.",
     },
     {
         title: "Cathedral rooms made by nature",
         images: [
-            "/travel/new-mexico/carlsbad-7.jpeg",
-            "/travel/new-mexico/carlsbad-1.jpeg",
-            "/travel/new-mexico/carlsbad-4.jpeg",
+            "/travel/new-mexico/carlsbad-2.jpeg",
+            "/travel/new-mexico/carlsbad-3.jpeg",
         ],
         text: "The main cavern is expansive, with high ceilings and rock formations in every direction. The lighting helps highlight the shapes without taking away from the natural feel of the cave. Some areas feel open and dramatic, while others are quieter and more enclosed. Moving through it feels less like a typical tourist stop and more like exploring something that has taken thousands of years to form.",
     },
     {
         title: "Textures that look unreal",
-        images: [
-            "/travel/new-mexico/carlsbad-2.jpeg",
-            "/travel/new-mexico/carlsbad-3.jpeg",
-        ],
+        images: ["/travel/new-mexico/carlsbad-6.jpeg"],
         text: "What stands out most are the details in the rock. The surfaces have layers, ridges, and soft curves that change depending on the angle and light. Some formations look smooth, while others appear almost like they are dripping or folded. It naturally slows you down, because there is always something new to notice.",
     },
     {
         title: "A quiet personal moment",
-        images: ["/travel/new-mexico/carlsbad-6.jpeg"],
-        text: "One moment that stayed with me was simply stopping and looking up at the cave ceiling. The scale of the formations and the quiet around made it easy to just pause for a bit. It wasn’t overwhelming, just steady and calm. Some places don’t make you feel small — they make you feel like you’re exactly where you’re meant to be.",
-    },
-    {
-        title: "The kind of place that stays with you",
         images: [
             "/travel/new-mexico/carlsbad-5.jpeg",
             "/travel/new-mexico/carlsbad-8.jpeg",
             "/travel/new-mexico/carlsbad-10.jpeg",
         ],
-        text: "By the end, it felt like more than just a cave visit. The space, the stillness, and the way everything is naturally formed makes it memorable without needing anything extra. Walking back out into the sunlight feels slightly different, like you’ve just come back from somewhere hidden. It’s a place I would easily recommend for a road trip or a quiet adventure.",
+        text: "One moment that stayed with me was simply stopping and looking up at the cave ceiling. The scale of the formations and the quiet around made it easy to just pause for a bit. It wasn’t overwhelming, just steady and calm. Some places don’t make you feel small — they make you feel like you’re exactly where you’re meant to be.",
     },
 ];
 
@@ -94,7 +94,7 @@ const content = {
         eyebrow: "New Mexico",
         title: "Carlsbad Caverns National Park",
         description:
-            "A desert stop that turned into one of the most magical underground adventures — quiet, ancient, dramatic, and unforgettable.",
+            "What started as a long Texas-to-New Mexico road trip slowly turned into one of the quietest and most unforgettable places I’ve explored.",
         sections: carlsbadSections,
     },
     whiteSands: {
@@ -128,8 +128,7 @@ export default function NewMexicoTravelPage() {
                 <div className={styles.navCenter}>
                     <button
                         type="button"
-                        className={`${styles.navLink} ${activeLocation === "carlsbad" ? styles.active : ""
-                            }`}
+                        className={`${styles.navLink} ${activeLocation === "carlsbad" ? styles.active : ""}`}
                         onClick={() => setActiveLocation("carlsbad")}
                     >
                         Carlsbad
@@ -137,8 +136,7 @@ export default function NewMexicoTravelPage() {
 
                     <button
                         type="button"
-                        className={`${styles.navLink} ${activeLocation === "whiteSands" ? styles.active : ""
-                            }`}
+                        className={`${styles.navLink} ${activeLocation === "whiteSands" ? styles.active : ""}`}
                         onClick={() => setActiveLocation("whiteSands")}
                     >
                         White Sands
@@ -146,8 +144,7 @@ export default function NewMexicoTravelPage() {
 
                     <button
                         type="button"
-                        className={`${styles.navLink} ${activeLocation === "sandia" ? styles.active : ""
-                            }`}
+                        className={`${styles.navLink} ${activeLocation === "sandia" ? styles.active : ""}`}
                         onClick={() => setActiveLocation("sandia")}
                     >
                         Sandia Peak
@@ -175,6 +172,93 @@ export default function NewMexicoTravelPage() {
                 <p>{activeContent.description}</p>
             </section>
 
+            {activeLocation === "carlsbad" && (
+                <>
+                    <section className={styles.travelInfoSection}>
+                        <h2>Quick Facts</h2>
+
+                        <div className={styles.infoGrid}>
+                            <div className={styles.infoCard}>
+                                <h3>📍 Location</h3>
+                                <p>Carlsbad Caverns National Park, New Mexico</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>🕒 Best Time</h3>
+                                <p>September – April for cooler weather and lighter crowds</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>💸 Budget</h3>
+                                <p>$$ — moderate road trip destination</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>🚗 Car Needed?</h3>
+                                <p>Yes — highly recommended</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>📷 Best Photo Spots</h3>
+                                <p>Natural Entrance trail, Big Room formations, desert roads at sunset</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>☕ Café Score</h3>
+                                <p>★★★☆☆</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>🌙 Nightlife</h3>
+                                <p>★☆☆☆☆ — quiet evenings and early mornings</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className={styles.travelInfoSection}>
+                        <h2>Places I Saved on Google Maps</h2>
+
+                        <div className={styles.infoGrid}>
+                            <div className={styles.infoCard}>
+                                <h3>Coffee & Stops</h3>
+                                <ul>
+                                    <li>San Angelo coffee stops</li>
+                                    <li>Midland charging break cafés</li>
+                                    <li>Roadside gas station snacks</li>
+                                </ul>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>Tesla Charging Stops</h3>
+                                <ul>
+                                    <li>Llano</li>
+                                    <li>Midland</li>
+                                    <li>Big Spring</li>
+                                    <li>Carlsbad Supercharger</li>
+                                </ul>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>Best Scenic Moments</h3>
+                                <ul>
+                                    <li>Desert highways near New Mexico border</li>
+                                    <li>Sunset roads outside Hobbs</li>
+                                    <li>Cavern entrance trail</li>
+                                </ul>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>Parking Notes</h3>
+                                <ul>
+                                    <li>Arrive early for easier parking</li>
+                                    <li>Closer parking fills quickly after morning entry</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </>
+            )}
+
             <section className={styles.storySection}>
                 {activeContent.sections.map((section, index) => (
                     <article key={`${activeLocation}-${section.title}`} className={styles.storyCard}>
@@ -196,69 +280,113 @@ export default function NewMexicoTravelPage() {
             </section>
 
             {activeLocation === "carlsbad" && (
-                <section className={styles.travelInfoSection}>
-                    <h2>Plan Your Visit</h2>
+                <>
+                    <section className={styles.travelInfoSection}>
+                        <h2>What This Trip Actually Cost</h2>
 
-                    <div className={styles.infoGrid}>
-                        <div className={styles.infoCard}>
-                            <h3>Trip Duration</h3>
-                            <ul>
-                                <li>Entrance to bottom: ~1–1.5 hours</li>
-                                <li>Big Room exploration: ~1–2 hours</li>
-                                <li>Total time: ~2.5–4 hours</li>
-                                <li>Elevator ride: ~1 minute</li>
-                            </ul>
+                        <div className={styles.infoGrid}>
+                            <div className={styles.infoCard}>
+                                <h3>Hotel</h3>
+                                <p>~$120–160/night in Hobbs</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>Cave Entry</h3>
+                                <p>~$15/person</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>Food</h3>
+                                <p>$$</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>Tesla Charging</h3>
+                                <p>Cheaper than expected for the full drive</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <h3>Rental Car</h3>
+                                <p>No</p>
+                            </div>
                         </div>
+                    </section>
+
+                    <section className={styles.travelInfoSection}>
+                        <h2>Trip Mood</h2>
+
+                        <div className={styles.infoGrid}>
+                            <div className={styles.infoCard}>
+                                <p>Relaxed ★★★★☆</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <p>Luxury ★★☆☆☆</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <p>Adventure ★★★★★</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <p>Photo-worthy ★★★★★</p>
+                            </div>
+
+                            <div className={styles.infoCard}>
+                                <p>Road Trip Energy ★★★★★</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className={styles.travelInfoSection}>
+                        <h2>Before You Go</h2>
+
+                        <div className={styles.infoGrid}>
+                            <div className={styles.infoCard}>
+                                <ul>
+                                    <li>First cave entry starts around 8:30 AM</li>
+                                    <li>Last entry is usually around 2:30 PM</li>
+                                    <li>The full cave round took us around 2 hours</li>
+                                    <li>Some cave sections are darker and slippery</li>
+                                    <li>Carry a flashlight to notice more cave details</li>
+                                    <li>Comfortable shoes are essential</li>
+                                    <li>Elevators are available from the bottom</li>
+                                    <li>Rangers help guide visitors toward elevators below</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className={styles.travelInfoSection}>
+                        <h2>What I’d Do Differently Next Time</h2>
+
+                        <div className={styles.infoGrid}>
+                            <div className={styles.infoCard}>
+                                <ul>
+                                    <li>Start the cave trail earlier in the morning</li>
+                                    <li>Carry a stronger flashlight for darker sections</li>
+                                    <li>Spend another evening in Carlsbad instead of only Hobbs</li>
+                                    <li>Plan charging stops more carefully before reaching Hobbs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className={styles.travelInfoSection}>
+                        <h2>My Carlsbad Route</h2>
 
                         <div className={styles.infoCard}>
-                            <h3>Elevator Wait</h3>
-                            <ul>
-                                <li>Early morning: 0–10 mins</li>
-                                <li>Midday: 15–40 mins</li>
-                                <li>Peak days: up to 45+ mins</li>
-                                <li>Best: go early or late</li>
-                            </ul>
+                            <iframe
+                                src="https://www.google.com/maps?q=Carlsbad%20Caverns%20National%20Park%2C%20New%20Mexico&output=embed"
+                                width="100%"
+                                height="420"
+                                style={{ border: 0, borderRadius: "24px" }}
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
                         </div>
-
-                        <div className={styles.infoCard}>
-                            <h3>Best Time</h3>
-                            <ul>
-                                <li>Start: 8:30 AM – 10:00 AM</li>
-                                <li>Less crowded + better pace</li>
-                                <li>Late entry is quieter but shorter</li>
-                            </ul>
-                        </div>
-
-                        <div className={styles.infoCard}>
-                            <h3>Timings</h3>
-                            <ul>
-                                <li>Last entry: ~2:30–3:30 PM</li>
-                                <li>Closing: ~4:30–5:30 PM</li>
-                                <li>Check same-day schedule</li>
-                            </ul>
-                        </div>
-
-                        <div className={styles.infoCard}>
-                            <h3>What to Carry</h3>
-                            <ul>
-                                <li>Water bottle</li>
-                                <li>Comfortable shoes</li>
-                                <li>Light jacket around 56°F</li>
-                                <li>Phone / camera</li>
-                            </ul>
-                        </div>
-
-                        <div className={styles.infoCard}>
-                            <h3>Precautions</h3>
-                            <ul>
-                                <li>Stay on marked paths</li>
-                                <li>Watch slippery areas</li>
-                                <li>No touching formations</li>
-                                <li>Take breaks if needed</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                </>
             )}
 
             {activeLocation === "sandia" && (
