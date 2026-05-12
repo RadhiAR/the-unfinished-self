@@ -43,7 +43,8 @@ export default function Home() {
             </p>
 
             <p className="intro">
-              A space where travel ✈️, stories 📖, and ideas 💭 come together. Built around curiosity 🌍, movement, and growth, it captures moments, places, and perspectives as they unfold—quietly evolving, one chapter at a time ✨
+              Where travel ✈️, stories 📖, and ideas 💭 meet ambition. Rooted in curiosity 🌍 and shaped by movement, it captures experiences, perspectives, and lessons gathered along the way ✨ Equal parts thoughtful and adventurous, with a touch of main-character energy 💅—always exploring, always evolving, one chapter at a time 💫
+
             </p>
 
             <div className="buttonRow">
@@ -79,7 +80,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="resumeBtn"
             >
-              View My Work →
+              Know me →
             </a>
           </div>
         </section>
