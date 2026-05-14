@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
+
 export default function SiteNavbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <nav className="siteNavbar">
@@ -18,13 +24,46 @@ export default function SiteNavbar() {
           <a href="/">Home</a>
           <a href="/travel-diaries">Places</a>
           <a href="/life-lens">Stories</a>
+          <a href="/travel-diaries/upload">Upload your trip</a>
         </div>
 
         <div className="navActions">
-          <a href="/travel-diaries" className="navBtn softBtn">
+          <a href="/travel-diaries/login" className="navBtn softBtn">
             Explore
           </a>
           <a href="/" className="navBtn pinkBtn">
+            Back Home
+          </a>
+        </div>
+
+        <button
+          type="button"
+          className={`navBurger ${menuOpen ? "open" : ""}`}
+          aria-label="Toggle navigation menu"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <div className={`navMobileMenu ${menuOpen ? "open" : ""}`}>
+          <a href="/" onClick={() => setMenuOpen(false)}>
+            Home
+          </a>
+          <a href="/travel-diaries" onClick={() => setMenuOpen(false)}>
+            Places
+          </a>
+          <a href="/life-lens" onClick={() => setMenuOpen(false)}>
+            Stories
+          </a>
+          <a href="/travel-diaries/upload" onClick={() => setMenuOpen(false)}>
+            Upload your trip
+          </a>
+          <a href="/travel-diaries/login" className="menuAction softBtn" onClick={() => setMenuOpen(false)}>
+            Explore
+          </a>
+          <a href="/" className="menuAction pinkBtn" onClick={() => setMenuOpen(false)}>
             Back Home
           </a>
         </div>
@@ -159,6 +198,90 @@ export default function SiteNavbar() {
                 transform: translateY(-3px);
               }
 
+              .navBurger {
+                display: none;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                padding: 10px;
+                border-radius: 14px;
+                transition: background 0.2s ease;
+              }
+
+              .navBurger:hover {
+                background: rgba(217, 70, 140, 0.08);
+              }
+
+              .navBurger span {
+                display: block;
+                width: 24px;
+                height: 3px;
+                margin: 4px 0;
+                border-radius: 999px;
+                background: #6f5361;
+                transition: transform 0.25s ease, opacity 0.25s ease;
+              }
+
+              .navBurger.open span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+              }
+
+              .navBurger.open span:nth-child(2) {
+                opacity: 0;
+              }
+
+              .navBurger.open span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+              }
+
+              .navMobileMenu {
+                display: none;
+                position: absolute;
+                top: calc(100% + 14px);
+                right: 0;
+                left: 0;
+                margin: 0 auto;
+                width: min(320px, calc(100% - 36px));
+                background: rgba(255, 255, 255, 0.98);
+                border: 1px solid rgba(241, 196, 214, 0.9);
+                border-radius: 24px;
+                box-shadow: 0 30px 60px rgba(184, 91, 133, 0.16);
+                padding: 18px;
+                gap: 12px;
+                z-index: 20;
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-10px);
+                transition: opacity 0.25s ease, transform 0.25s ease;
+              }
+
+              .navMobileMenu.open {
+                display: grid;
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+              }
+
+              .navMobileMenu a {
+                display: block;
+                text-decoration: none;
+                color: #6f5361;
+                font-weight: 900;
+                padding: 14px 18px;
+                border-radius: 18px;
+                transition: background 0.2s ease, color 0.2s ease;
+              }
+
+              .navMobileMenu a:hover {
+                background: rgba(217, 70, 140, 0.08);
+                color: #d9468c;
+              }
+
+              .navMobileMenu .menuAction {
+                width: 100%;
+                text-align: center;
+              }
+
               @media (max-width: 900px) {
                 .siteNavbar {
                   width: calc(100% - 28px);
@@ -168,17 +291,29 @@ export default function SiteNavbar() {
                 }
 
                 .navLinks {
-                  flex-wrap: wrap;
-                  gap: 18px;
+                  display: none;
                 }
 
                 .navActions {
-                  width: 100%;
-                  flex-direction: column;
+                  display: none;
                 }
 
-                .navBtn {
-                  width: 100%;
+                .navBurger {
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+
+                .navMobileMenu {
+                  right: 22px;
+                  top: calc(100% + 12px);
+                  width: calc(100% - 44px);
+                }
+              }
+
+              @media (min-width: 901px) {
+                .navMobileMenu {
+                  display: none !important;
                 }
               }
             `,

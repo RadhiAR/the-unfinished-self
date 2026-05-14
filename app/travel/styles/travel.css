@@ -40,7 +40,8 @@ a {
 .travelHero,
 .splitSection,
 .collabSection,
-.moodSection {
+.moodSection,
+.authSection {
     width: 100%;
     max-width: var(--content-width);
     margin: 30px auto 0;
@@ -64,7 +65,8 @@ a {
 
 .introText,
 .sectionHeader,
-.splitText {
+.splitText,
+.authIntro {
     min-width: 0;
 }
 
@@ -89,7 +91,8 @@ a {
 .sectionHeader h2,
 .splitText h2,
 .collabSection h2,
-.moodSection h2 {
+.moodSection h2,
+.authIntro h1 {
     margin: 0;
     color: var(--text);
     letter-spacing: -0.03em;
@@ -106,7 +109,8 @@ a {
 .sectionHeader p,
 .splitText p,
 .collabSection p,
-.introCard p {
+.introCard p,
+.authIntro p {
     margin: 20px 0 0;
     max-width: 640px;
     color: var(--muted);
@@ -151,7 +155,8 @@ a {
 .placeCard:hover,
 .pillarCard:hover,
 .brandCard:hover,
-.planningItem:hover {
+.planningItem:hover,
+.createAccountBtn:hover {
     transform: translateY(-3px);
 }
 
@@ -319,13 +324,178 @@ a {
     line-height: 1.16;
 }
 
+/* AUTH / LOGIN PAGE */
+
+.authSection {
+    margin-top: 34px;
+    padding: 54px;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(360px, 0.75fr);
+    gap: 50px;
+    align-items: center;
+}
+
+.authIntro h1 {
+    max-width: 650px;
+    font-size: clamp(42px, 5vw, 76px);
+    line-height: 0.98;
+}
+
+.authCard {
+    padding: 34px;
+    border-radius: 30px;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 246, 251, 0.86));
+    border: 1px solid rgba(235, 175, 204, 0.62);
+    box-shadow: 0 22px 60px rgba(129, 64, 94, 0.12);
+}
+
+.authTabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(255, 220, 237, 0.55);
+    border: 1px solid rgba(237, 188, 210, 0.65);
+}
+
+.authTab {
+    border: 0;
+    border-radius: 999px;
+    padding: 13px 18px;
+    background: transparent;
+    color: #7a5365;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.activeTab {
+    color: white;
+    background: linear-gradient(135deg, #d9468c, #f176ad, #8ccfff);
+    box-shadow: 0 12px 26px rgba(217, 70, 140, 0.22);
+}
+
+.authForm {
+    display: grid;
+    gap: 18px;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.authForm label {
+    display: grid;
+    gap: 8px;
+    color: #4c2c3a;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.authForm input[type="text"],
+.authForm input[type="email"],
+.authForm input[type="tel"],
+.authForm input[type="password"] {
+    width: 100%;
+    min-height: 50px;
+    border: 1px solid rgba(226, 159, 190, 0.7);
+    border-radius: 16px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    outline: none;
+    box-shadow: 0 10px 24px rgba(47, 29, 38, 0.04);
+}
+
+.authForm input:focus {
+    border-color: rgba(217, 70, 140, 0.72);
+    box-shadow: 0 0 0 4px rgba(217, 70, 140, 0.1);
+}
+
+.optionalText {
+    color: #9a7484;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.checkboxGroup {
+    display: grid;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.checkboxRow {
+    display: grid !important;
+    grid-template-columns: 18px 1fr;
+    align-items: start;
+    gap: 12px !important;
+    color: var(--muted) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1.45;
+}
+
+.checkboxRow input {
+    width: 18px;
+    height: 18px;
+    margin: 1px 0 0;
+    accent-color: #d9468c;
+}
+
+.checkboxRow a {
+    color: #d9468c;
+    font-weight: 900;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.createAccountBtn {
+    width: 100%;
+    min-height: 54px;
+    margin-top: 8px;
+    border: 0;
+    border-radius: 999px;
+    color: white;
+    background: linear-gradient(135deg, #d9468c, #ee79b0, #7fc8ff);
+    box-shadow: 0 16px 34px rgba(217, 70, 140, 0.26);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.loginNote {
+    margin: 4px 0 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.loginNote a {
+    color: #d9468c;
+    font-weight: 900;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 1000px) {
 
     .travelIntro,
     .splitSection,
-    .collabSection {
+    .collabSection,
+    .authSection {
         grid-template-columns: 1fr;
     }
 
@@ -337,6 +507,10 @@ a {
     .placesGrid,
     .brandGrid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .authCard {
+        max-width: 680px;
     }
 }
 
@@ -350,7 +524,8 @@ a {
     .travelHero,
     .splitSection,
     .collabSection,
-    .moodSection {
+    .moodSection,
+    .authSection {
         margin-top: 22px;
         padding: 32px 22px;
         border-radius: 26px;
@@ -362,6 +537,11 @@ a {
     .collabSection h2 {
         font-size: 32px;
         line-height: 1.1;
+    }
+
+    .authIntro h1 {
+        font-size: 40px;
+        line-height: 1.05;
     }
 
     .pillText,
@@ -382,8 +562,14 @@ a {
 
     .pillarGrid,
     .placesGrid,
-    .brandGrid {
+    .brandGrid,
+    .formGrid {
         grid-template-columns: 1fr;
+    }
+
+    .authCard {
+        padding: 24px;
+        border-radius: 24px;
     }
 
     .moodSection h2 {

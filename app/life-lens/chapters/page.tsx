@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 
 type Book = {
@@ -86,23 +87,23 @@ export default async function ChaptersPage() {
           <h2>Choose your tea</h2>
 
           <div className="categoryCardsGrid">
-            <a href="#weekly-series" className="categoryCard">
+            <Link href="/life-lens/i-dreamed-you-first" className="categoryCard">
               <span>Books it is</span>
               <h3>I Dreamed You First : A love that found me</h3>
               <p>
                 Young, certain, and in love — About the girl who built her whole world around him, and called it home.
               </p>
               <strong>Read me →</strong>
-            </a>
+            </Link>
 
-            <a href="#spoiled-tea" className="categoryCard">
+            <Link href="/life-lens/spoiled-tea" className="categoryCard">
               <span>Weekly Diary</span>
               <h3>Spoiled Tea</h3>
               <p>
-                A curated space for thoughts, experiences, and reflections—captured with intent, felt with intensity.
+                A curated space for thoughts, experiences, and reflections — captured with intent, felt with intensity.
               </p>
-              <strong>At your own risk →</strong>
-            </a>
+              <strong>Read the novel →</strong>
+            </Link>
           </div>
         </section>
 
