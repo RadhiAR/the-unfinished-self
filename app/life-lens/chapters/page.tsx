@@ -102,7 +102,7 @@ export default async function ChaptersPage() {
               <p>
                 A curated space for thoughts, experiences, and reflections — captured with intent, felt with intensity.
               </p>
-              <strong>Read the novel →</strong>
+              <strong>Spill the Tea →</strong>
             </Link>
           </div>
         </section>

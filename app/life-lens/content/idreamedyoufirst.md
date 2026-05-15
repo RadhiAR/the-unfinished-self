@@ -181,3 +181,4 @@ It was ridiculous.
 I didn’t even know him.
 And yet, some quiet part of me already wanted the moment to last a little longer.
 But instead, I just took the phone back from his hands, smiled like I was completely unaffected by the entire situation, and went back to the game, pretending nothing had happened.
+Chapter 2: 
