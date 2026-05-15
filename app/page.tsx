@@ -1,11 +1,6 @@
 export default function Home() {
   const projects = [
     {
-      title: "Loomeira",
-      desc: "A platform for handmade design, custom creations, and thoughtful craftsmanship—bringing creativity and community together.",
-      tag: "Founder Project",
-    },
-    {
       title: "Muse & Miles",
       desc: "A lens on travel, culture, and modern experiences—capturing places, stories, and everything in between.",
       tag: "The Travel Edit",
@@ -44,7 +39,6 @@ export default function Home() {
 
             <p className="intro">
               Where travel ✈️, stories 📖, and ideas 💭 meet ambition. Rooted in curiosity 🌍 and shaped by movement, it captures experiences, perspectives, and lessons gathered along the way ✨ Equal parts thoughtful and adventurous, with a touch of main-character energy 💅—always exploring, always evolving, one chapter at a time 💫
-
             </p>
 
             <div className="buttonRow">
@@ -94,11 +88,7 @@ export default function Home() {
           <div className="projectGrid pageBlock">
             {projects.map((project) => (
               <article
-                className={`projectCard ${project.title === "Loomeira"
-                  ? "featuredCard"
-                  : project.title === "The Weekly Tea"
-                    ? "writingCard"
-                    : ""
+                className={`projectCard ${project.title === "The Weekly Tea" ? "writingCard" : ""
                   }`}
                 key={project.title}
               >
@@ -108,34 +98,16 @@ export default function Home() {
 
                 <a
                   href={
-                    project.title === "Loomeira"
-                      ? "/loomeira"
-                      : project.title === "Muse & Miles"
-                        ? "/travel-diaries"
-                        : project.title === "The Weekly Tea"
-                          ? "/life-lens"
-                          : "/"
+                    project.title === "Muse & Miles"
+                      ? "/travel-diaries"
+                      : "/life-lens"
                   }
-                  target={
-                    project.title === "Muse & Miles" ||
-                      project.title === "The Weekly Tea"
-                      ? "_blank"
-                      : "_self"
-                  }
-                  rel={
-                    project.title === "Muse & Miles" ||
-                      project.title === "The Weekly Tea"
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {project.title === "The Weekly Tea"
                     ? "Get some Tea →"
-                    : project.title === "Muse & Miles"
-                      ? "Run the Miles here →"
-                      : project.title === "Loomeira"
-                        ? "Discover Loomeira →"
-                        : "Explore →"}
+                    : "Run the Miles here →"}
                 </a>
               </article>
             ))}
@@ -394,7 +366,7 @@ export default function Home() {
 
             .projectGrid {
               display: grid;
-              grid-template-columns: repeat(3, minmax(0, 1fr));
+              grid-template-columns: repeat(2, minmax(0, 1fr));
               gap: 24px;
               align-items: stretch;
             }
@@ -437,12 +409,6 @@ export default function Home() {
               opacity: 1;
             }
 
-            .featuredCard {
-              background: linear-gradient(145deg, #fff1f8, #ffe0ef, #fff8fc);
-              border-color: #eda7c6;
-              box-shadow: 0 24px 56px rgba(217, 70, 140, 0.18);
-            }
-
             .writingCard {
               background: linear-gradient(145deg, #fff9fc, #fff4f8, #f8fbff);
               border-color: #f3c6d9;
@@ -460,11 +426,6 @@ export default function Home() {
               font-weight: 900;
               position: relative;
               z-index: 1;
-            }
-
-            .featuredCard span {
-              background: #ffd3e8;
-              color: #8f2f5c;
             }
 
             .writingCard span {
