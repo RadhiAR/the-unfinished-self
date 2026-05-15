@@ -1,35 +1,56 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 import styles from "../lifeLens.module.css";
 
 type TeaPost = {
-    firstName: string;
-    lastName: string;
-    date: string;
+    id?: string;
+    first_name: string;
+    last_name: string;
+    post_date: string;
     title: string;
     category: string;
     content: string;
+    created_at?: string;
 };
+
+const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default function SpoiledTeaPage() {
     const [showFeed, setShowFeed] = useState(false);
-
     const [posts, setPosts] = useState<TeaPost[]>([]);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [formData, setFormData] = useState<TeaPost>({
-        firstName: "",
-        lastName: "",
-        date: "",
+        first_name: "",
+        last_name: "",
+        post_date: "",
         title: "",
         category: "",
         content: "",
     });
 
+    async function loadPosts() {
+        const { data, error } = await supabase
+            .from("weekly_tea_posts")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+        if (!error && data) {
+            setPosts(data as TeaPost[]);
+        }
+    }
+
+    useEffect(() => {
+        loadPosts();
+    }, []);
+
     function handleChange(
-        e: React.ChangeEvent<
-            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) {
         setFormData({
             ...formData,
@@ -37,21 +58,39 @@ export default function SpoiledTeaPage() {
         });
     }
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
+        setIsSubmitting(true);
 
-        setPosts([formData, ...posts]);
+        const { error } = await supabase.from("weekly_tea_posts").insert([
+            {
+                first_name: formData.first_name,
+                last_name: formData.last_name,
+                post_date: formData.post_date,
+                title: formData.title,
+                category: formData.category,
+                content: formData.content,
+            },
+        ]);
 
-        setShowFeed(true);
+        setIsSubmitting(false);
+
+        if (error) {
+            alert("Something went wrong while posting your tea.");
+            return;
+        }
 
         setFormData({
-            firstName: "",
-            lastName: "",
-            date: "",
+            first_name: "",
+            last_name: "",
+            post_date: "",
             title: "",
             category: "",
             content: "",
         });
+
+        await loadPosts();
+        setShowFeed(true);
     }
 
     if (showFeed) {
@@ -66,15 +105,15 @@ export default function SpoiledTeaPage() {
                 </section>
 
                 <section className={styles.feedWrap}>
-                    {posts.map((post, index) => (
-                        <article className={styles.feedCard} key={index}>
+                    {posts.map((post) => (
+                        <article className={styles.feedCard} key={post.id}>
                             <div className={styles.feedTop}>
                                 <div>
                                     <h3>
-                                        {post.firstName} {post.lastName}
+                                        {post.first_name} {post.last_name}
                                     </h3>
 
-                                    <span>{post.date}</span>
+                                    <span>{post.post_date}</span>
                                 </div>
 
                                 <p className={styles.feedCategory}>{post.category}</p>
@@ -110,10 +149,11 @@ export default function SpoiledTeaPage() {
                             First Name
                             <input
                                 type="text"
-                                name="firstName"
+                                name="first_name"
                                 placeholder="Your first name"
-                                value={formData.firstName}
+                                value={formData.first_name}
                                 onChange={handleChange}
+                                required
                             />
                         </label>
 
@@ -121,10 +161,11 @@ export default function SpoiledTeaPage() {
                             Last Name
                             <input
                                 type="text"
-                                name="lastName"
+                                name="last_name"
                                 placeholder="Your last name"
-                                value={formData.lastName}
+                                value={formData.last_name}
                                 onChange={handleChange}
+                                required
                             />
                         </label>
                     </div>
@@ -134,9 +175,10 @@ export default function SpoiledTeaPage() {
                             Date
                             <input
                                 type="date"
-                                name="date"
-                                value={formData.date}
+                                name="post_date"
+                                value={formData.post_date}
                                 onChange={handleChange}
+                                required
                             />
                         </label>
 
@@ -148,6 +190,7 @@ export default function SpoiledTeaPage() {
                                 placeholder="Give this tea a title"
                                 value={formData.title}
                                 onChange={handleChange}
+                                required
                             />
                         </label>
                     </div>
@@ -158,9 +201,9 @@ export default function SpoiledTeaPage() {
                             name="category"
                             value={formData.category}
                             onChange={handleChange}
+                            required
                         >
                             <option value="">Choose a category</option>
-
                             <option value="Feelings">Feelings</option>
                             <option value="Life">Life</option>
                             <option value="World">World</option>
@@ -177,11 +220,12 @@ export default function SpoiledTeaPage() {
                             placeholder="Write what you felt, saw, learned, noticed, or want to share this week..."
                             value={formData.content}
                             onChange={handleChange}
+                            required
                         />
                     </label>
 
-                    <button type="submit" className={styles.submitBtn}>
-                        Post Weekly Tea →
+                    <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                        {isSubmitting ? "Posting..." : "Post Weekly Tea →"}
                     </button>
                 </form>
             </section>
