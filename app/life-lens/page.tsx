@@ -46,9 +46,13 @@ export default function LifeLensLandingPage() {
             </p>
 
             <div className={styles.heroActions}>
-              <a href="/life-lens/chapters" className={styles.primaryBtn}>
+              <button
+                type="button"
+                className={styles.primaryBtn}
+                onClick={() => setLoginType("read")}
+              >
                 Enter my s(h)elf →
-              </a>
+              </button>
 
               <button
                 type="button"

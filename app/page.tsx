@@ -65,7 +65,7 @@ export default function Home() {
             </p>
 
             <p>
-              More than a portfolio, it holds pieces of work, thoughts, and experiences—woven together as a reflection of growth, direction, and everything still taking shape. Some parts are intentional, others still unfolding, but all of it moves forward with purpose. Each project, place, and moment adds to the story, unfolding one chapter at a time 📖.
+              More than a portfolio, it holds pieces of work, thoughts, and experiences—woven together as a reflection of growth, direction, and everything still taking shape. Some parts are intentional, others still unfolding, but all of it moves forward with purpose. Each project, place, and moment stands as proof of resilience, capability, and the belief that I am meant for the opportunities ahead 📖
             </p>
 
             <a
@@ -130,6 +130,24 @@ export default function Home() {
         <footer className="footer">
           <h3>THE UNFINISHED SELF</h3>
           <p>Still becoming. Still building. Still wearing pink.</p>
+
+          <div className="socialRow">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <img src="/instagram.avif" alt="Instagram" />
+            </a>
+
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="/facebook.webp" alt="Facebook" />
+            </a>
+
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+              <img src="/twitter.avif" alt="X / Twitter" />
+            </a>
+
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+              <img src="/pinterest.avif" alt="Pinterest" />
+            </a>
+          </div>
         </footer>
       </main>
 
@@ -527,6 +545,41 @@ export default function Home() {
               margin: 12px 0 0;
               font-size: 15px;
             }
+
+.socialRow {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.socialRow a {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 240, 247, 0.92);
+  border: 1px solid #f1c4d6;
+  box-shadow: 0 10px 24px rgba(184, 91, 133, 0.12);
+  transition: all 0.25s ease;
+}
+
+.socialRow a:hover {
+  transform: translateY(-4px);
+  background: white;
+  box-shadow: 0 16px 34px rgba(217, 70, 140, 0.2);
+}
+
+.socialRow img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
 
             @media (max-width: 900px) {
               .pageBlock {
