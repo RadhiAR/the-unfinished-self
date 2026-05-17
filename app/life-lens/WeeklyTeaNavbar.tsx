@@ -12,14 +12,21 @@ type WeeklyTeaUser = {
     email: string;
 };
 
+const ADMIN_EMAILS = [
+    "raddanki91@gmail.com",
+];
+
 export default function WeeklyTeaNavbar() {
     const [loginType, setLoginType] = useState<"read" | "write" | null>(null);
+
     const [user, setUser] = useState<WeeklyTeaUser | null>(null);
+
     const [showUserMenu, setShowUserMenu] = useState(false);
 
     function loadUser() {
         try {
-            const savedUser = window.localStorage.getItem("weeklyTeaUser");
+            const savedUser =
+                window.localStorage.getItem("weeklyTeaUser");
 
             if (!savedUser) {
                 setUser(null);
@@ -35,18 +42,33 @@ export default function WeeklyTeaNavbar() {
 
     useEffect(() => {
         loadUser();
-        window.addEventListener("weeklyTeaUserUpdated", loadUser);
+
+        window.addEventListener(
+            "weeklyTeaUserUpdated",
+            loadUser
+        );
 
         return () => {
-            window.removeEventListener("weeklyTeaUserUpdated", loadUser);
+            window.removeEventListener(
+                "weeklyTeaUserUpdated",
+                loadUser
+            );
         };
     }, []);
 
     function handleSignOut() {
         window.localStorage.removeItem("weeklyTeaUser");
+
         setUser(null);
+
         setShowUserMenu(false);
     }
+
+    const isAdmin =
+        user?.email &&
+        ADMIN_EMAILS.includes(
+            user.email.toLowerCase()
+        );
 
     return (
         <>
@@ -61,15 +83,27 @@ export default function WeeklyTeaNavbar() {
 
                 <div className={styles.navLinks}>
                     <a href="#about">About</a>
+
                     <a href="#features">Stories</a>
-                    <a href="/life-lens/chapters">Shelf</a>
+
+                    <a href="/life-lens/chapters">
+                        Shelf
+                    </a>
+
+                    {isAdmin && (
+                        <a href="/admin/weekly-tea-requests">
+                            Approvals
+                        </a>
+                    )}
                 </div>
 
                 <div className={styles.navActions}>
                     <button
                         type="button"
                         className={`${styles.navCta} ${styles.navCtaRead}`}
-                        onClick={() => setLoginType("read")}
+                        onClick={() =>
+                            setLoginType("read")
+                        }
                     >
                         Click to Read
                     </button>
@@ -77,7 +111,9 @@ export default function WeeklyTeaNavbar() {
                     <button
                         type="button"
                         className={`${styles.navCta} ${styles.navCtaWrite}`}
-                        onClick={() => setLoginType("write")}
+                        onClick={() =>
+                            setLoginType("write")
+                        }
                     >
                         Click to Write
                     </button>
@@ -87,22 +123,49 @@ export default function WeeklyTeaNavbar() {
                             <button
                                 type="button"
                                 className={styles.userIconBtn}
-                                onClick={() => setShowUserMenu(!showUserMenu)}
+                                onClick={() =>
+                                    setShowUserMenu(
+                                        !showUserMenu
+                                    )
+                                }
                             >
                                 👤
                             </button>
 
                             {showUserMenu && (
-                                <div className={styles.userDropdown}>
+                                <div
+                                    className={
+                                        styles.userDropdown
+                                    }
+                                >
                                     <h4>
-                                        {user.firstName} {user.lastName}
+                                        {user.firstName}{" "}
+                                        {user.lastName}
                                     </h4>
 
                                     <p>{user.email}</p>
+
                                     <p>{user.location}</p>
+
                                     <p>{user.contact}</p>
 
-                                    <button type="button" onClick={handleSignOut}>
+                                    {isAdmin && (
+                                        <a
+                                            href="/admin/weekly-tea-requests"
+                                            className={
+                                                styles.adminLink
+                                            }
+                                        >
+                                            Open Approvals
+                                        </a>
+                                    )}
+
+                                    <button
+                                        type="button"
+                                        onClick={
+                                            handleSignOut
+                                        }
+                                    >
                                         Sign out
                                     </button>
                                 </div>
@@ -112,7 +175,12 @@ export default function WeeklyTeaNavbar() {
                 </div>
             </nav>
 
-            <WeeklyTeaLoginModal type={loginType} onClose={() => setLoginType(null)} />
+            <WeeklyTeaLoginModal
+                type={loginType}
+                onClose={() =>
+                    setLoginType(null)
+                }
+            />
         </>
     );
 }

@@ -1,0 +1,232 @@
+.adminPage {
+    min-height: 100vh;
+    padding: 60px 22px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #2f1d26;
+    background:
+        radial-gradient(circle at 12% 12%, rgba(255, 210, 232, 0.8), transparent 34%),
+        radial-gradient(circle at 88% 16%, rgba(221, 241, 255, 0.88), transparent 31%),
+        linear-gradient(180deg, #fff7fb, #fff0f7 48%, #ffffff);
+}
+
+.adminShell {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 42px;
+    border-radius: 34px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #f1bfd4;
+    box-shadow: 0 24px 70px rgba(184, 91, 133, 0.16);
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: #d9468c;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: clamp(38px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.header p {
+    max-width: 640px;
+    margin: 18px auto 0;
+    color: #76596a;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.tokenBox {
+    margin: 28px 0;
+    display: flex;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid #f1bfd4;
+    box-shadow: 0 18px 44px rgba(184, 91, 133, 0.12);
+}
+
+.tokenBox input {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1px solid #f0bfd3;
+    background: #fff9fc;
+    color: #2f1d26;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    outline: none;
+}
+
+.tokenBox button,
+.actions button {
+    border: none;
+    cursor: pointer;
+    border-radius: 999px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: transform 0.22s ease;
+}
+
+.tokenBox button {
+    padding: 14px 24px;
+    color: white;
+    background: linear-gradient(135deg, #d9468c, #f472b6, #7fc8ff);
+    box-shadow: 0 14px 30px rgba(217, 70, 140, 0.24);
+}
+
+.tokenBox button:hover,
+.actions button:hover {
+    transform: translateY(-2px);
+}
+
+.message {
+    margin: 0 0 24px;
+    padding: 14px 18px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid #f1bfd4;
+    color: #9d3f68;
+    font-weight: 800;
+    text-align: center;
+}
+
+.requestGrid {
+    display: grid;
+    gap: 20px;
+}
+
+.emptyCard,
+.requestCard {
+    padding: 26px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #f1bfd4;
+    box-shadow: 0 18px 48px rgba(184, 91, 133, 0.13);
+}
+
+.emptyCard {
+    text-align: center;
+    color: #76596a;
+    font-size: 18px;
+}
+
+.cardTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.cardTop h2 {
+    margin: 0;
+    color: #2f1d26;
+    font-size: 28px;
+}
+
+.cardTop p {
+    margin: 8px 0 0;
+    color: #76596a;
+    font-size: 15px;
+}
+
+.statusPill {
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.approved {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.rejected {
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+.pending {
+    color: #92400e;
+    background: #fef3c7;
+}
+
+.details {
+    margin-top: 20px;
+    display: grid;
+    gap: 8px;
+    color: #654758;
+}
+
+.details p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.actions {
+    margin-top: 22px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.actions button {
+    padding: 12px 18px;
+}
+
+.approveBtn {
+    color: white;
+    background: linear-gradient(135deg, #16a34a, #86efac);
+}
+
+.rejectBtn {
+    color: white;
+    background: linear-gradient(135deg, #dc2626, #fca5a5);
+}
+
+.pendingBtn {
+    color: #78350f;
+    background: #fef3c7;
+}
+
+@media (max-width: 700px) {
+    .adminPage {
+        padding: 36px 14px;
+    }
+
+    .header {
+        padding: 32px 22px;
+    }
+
+    .tokenBox {
+        flex-direction: column;
+    }
+
+    .cardTop {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}

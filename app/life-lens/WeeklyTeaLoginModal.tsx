@@ -24,10 +24,22 @@ const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
+async function hashPassword(password: string) {
+    const encodedPassword = new TextEncoder().encode(password);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", encodedPassword);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    return hashArray
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+}
+
 export default function WeeklyTeaLoginModal({
     type,
     onClose,
 }: WeeklyTeaLoginModalProps) {
+    const [mode, setMode] = useState<"login" | "request">("login");
+
     const [formData, setFormData] = useState<WeeklyTeaUser>({
         firstName: "",
         lastName: "",
@@ -35,6 +47,9 @@ export default function WeeklyTeaLoginModal({
         contact: "",
         email: "",
     });
+
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const [message, setMessage] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,7 +71,55 @@ export default function WeeklyTeaLoginModal({
         });
     }
 
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    function saveUserAndRedirect(user: WeeklyTeaUser) {
+        window.localStorage.setItem(
+            "weeklyTeaUser",
+            JSON.stringify(user)
+        );
+
+        window.dispatchEvent(new Event("weeklyTeaUserUpdated"));
+
+        window.location.href = isRead
+            ? "/life-lens/chapters"
+            : "/life-lens/spoiled-tea";
+    }
+
+    async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        setIsSubmitting(true);
+        setMessage("");
+
+        try {
+            const response = await fetch("/api/weekly-tea/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: formData.email.trim().toLowerCase(),
+                    password,
+                    accessType: type,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                setMessage(result.error || "Unable to log in.");
+                setIsSubmitting(false);
+                return;
+            }
+
+            saveUserAndRedirect(result.user);
+        } catch (error) {
+            console.error(error);
+            setMessage("Something went wrong. Please try again.");
+            setIsSubmitting(false);
+        }
+    }
+
+    async function handleRequest(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         setIsSubmitting(true);
@@ -64,7 +127,15 @@ export default function WeeklyTeaLoginModal({
 
         const cleanEmail = formData.email.trim().toLowerCase();
 
+        if (password !== confirmPassword) {
+            setMessage("Passwords do not match.");
+            setIsSubmitting(false);
+            return;
+        }
+
         try {
+            const passwordHash = await hashPassword(password);
+
             const { data: existingRequests } = await supabase
                 .from("weekly_tea_access_requests")
                 .select("*")
@@ -76,24 +147,9 @@ export default function WeeklyTeaLoginModal({
             const existingRequest = existingRequests?.[0];
 
             if (existingRequest?.status === "approved") {
-                const user = {
-                    ...formData,
-                    email: cleanEmail,
-                };
-
-                window.localStorage.setItem(
-                    "weeklyTeaUser",
-                    JSON.stringify(user)
-                );
-
-                window.dispatchEvent(
-                    new Event("weeklyTeaUserUpdated")
-                );
-
-                window.location.href = isRead
-                    ? "/life-lens/chapters"
-                    : "/life-lens/spoiled-tea";
-
+                setMessage("You are already approved. Please use Login.");
+                setMode("login");
+                setIsSubmitting(false);
                 return;
             }
 
@@ -109,28 +165,22 @@ export default function WeeklyTeaLoginModal({
                             email: cleanEmail,
                             access_type: type,
                             status: "pending",
+                            password_hash: passwordHash,
                         },
                     ]);
 
                 if (error) {
                     console.error(error);
-
+                    setMessage("Something went wrong. Please try again.");
                     setIsSubmitting(false);
-
-                    setMessage(
-                        "Something went wrong. Please try again."
-                    );
-
                     return;
                 }
 
                 await fetch("/api/send-approval-email", {
                     method: "POST",
-
                     headers: {
                         "Content-Type": "application/json",
                     },
-
                     body: JSON.stringify({
                         firstName: formData.firstName,
                         lastName: formData.lastName,
@@ -144,16 +194,14 @@ export default function WeeklyTeaLoginModal({
             setIsSubmitting(false);
 
             setMessage(
-                "Your request has been submitted. You can access this after approval."
+                "Your request has been submitted. You can log in after approval."
             );
         } catch (error) {
             console.error(error);
 
             setIsSubmitting(false);
 
-            setMessage(
-                "Something went wrong. Please try again."
-            );
+            setMessage("Something went wrong. Please try again.");
         }
     }
 
@@ -181,169 +229,224 @@ export default function WeeklyTeaLoginModal({
                 />
 
                 <p className={styles.weeklyTeaModalEyebrow}>
-                    {isRead
-                        ? "Reader Access"
-                        : "Writer Access"}
+                    {isRead ? "Reader Access" : "Writer Access"}
                 </p>
 
                 <h2 className={styles.weeklyTeaModalTitle}>
-                    {isRead
-                        ? "Subscribe to Read"
-                        : "Subscribe to Write"}
+                    {mode === "login"
+                        ? isRead
+                            ? "Log in to Read"
+                            : "Log in to Write"
+                        : isRead
+                            ? "Request to Read"
+                            : "Request to Write"}
                 </h2>
 
                 <p className={styles.weeklyTeaModalText}>
-                    {isRead
-                        ? "Log in or subscribe to read weekly stories, reflections, and personal essays."
-                        : "Tell us a little about your writing world before you begin publishing on The Weekly Tea."}
+                    {mode === "login"
+                        ? "Use your approved email and password to continue."
+                        : isRead
+                            ? "Request reader access for weekly stories, reflections, and personal essays."
+                            : "Tell us a little about your writing world before you begin publishing on The Weekly Tea."}
                 </p>
 
-                <form
-                    className={styles.weeklyTeaModalForm}
-                    onSubmit={handleSubmit}
-                >
-                    <input
-                        type="text"
-                        name="firstName"
-                        placeholder="First Name"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        required
-                    />
-
-                    <input
-                        type="text"
-                        name="lastName"
-                        placeholder="Last Name"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        required
-                    />
-
-                    <input
-                        type="text"
-                        name="location"
-                        placeholder="Where are you located?"
-                        value={formData.location}
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        type="text"
-                        name="contact"
-                        placeholder="Contact Number"
-                        value={formData.contact}
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email address"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        required
-                    />
-
-                    {!isRead && (
-                        <>
-                            <input
-                                type="password"
-                                placeholder="Confirm Password"
-                                required
-                            />
-
-                            <select defaultValue="">
-                                <option value="" disabled>
-                                    What genre do you want to write in?
-                                </option>
-
-                                <option value="personal-essay">
-                                    Personal Essay
-                                </option>
-
-                                <option value="fiction">
-                                    Fiction
-                                </option>
-
-                                <option value="poetry">
-                                    Poetry
-                                </option>
-
-                                <option value="romance">
-                                    Romance
-                                </option>
-
-                                <option value="self-growth">
-                                    Self Growth
-                                </option>
-
-                                <option value="journal">
-                                    Journal / Diary
-                                </option>
-
-                                <option value="other">
-                                    Other
-                                </option>
-                            </select>
-
-                            <select defaultValue="">
-                                <option value="" disabled>
-                                    What are you creating?
-                                </option>
-
-                                <option value="weekly-book">
-                                    Weekly Book
-                                </option>
-
-                                <option value="weekly-diary">
-                                    Weekly Diary
-                                </option>
-
-                                <option value="weekly-column">
-                                    Weekly Column
-                                </option>
-
-                                <option value="short-stories">
-                                    Short Stories
-                                </option>
-
-                                <option value="life-notes">
-                                    Life Notes
-                                </option>
-                            </select>
-
-                            <textarea placeholder="What motivated you to write?" />
-                        </>
-                    )}
+                <div className={styles.authSwitch}>
+                    <button
+                        type="button"
+                        className={mode === "login" ? styles.authSwitchActive : ""}
+                        onClick={() => {
+                            setMode("login");
+                            setMessage("");
+                        }}
+                    >
+                        Login
+                    </button>
 
                     <button
-                        type="submit"
-                        disabled={isSubmitting}
+                        type="button"
+                        className={mode === "request" ? styles.authSwitchActive : ""}
+                        onClick={() => {
+                            setMode("request");
+                            setMessage("");
+                        }}
                     >
-                        {isSubmitting
-                            ? "Submitting..."
-                            : isRead
-                                ? "Request to Read"
-                                : "Request to Write"}
+                        Request Access
                     </button>
-                </form>
+                </div>
+
+                {mode === "login" ? (
+                    <form
+                        className={styles.weeklyTeaModalForm}
+                        onSubmit={handleLogin}
+                    >
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email address"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            required
+                        />
+
+                        <button type="submit" disabled={isSubmitting}>
+                            {isSubmitting ? "Logging in..." : "Login"}
+                        </button>
+                    </form>
+                ) : (
+                    <form
+                        className={styles.weeklyTeaModalForm}
+                        onSubmit={handleRequest}
+                    >
+                        <input
+                            type="text"
+                            name="firstName"
+                            placeholder="First Name"
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="text"
+                            name="lastName"
+                            placeholder="Last Name"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="text"
+                            name="location"
+                            placeholder="Where are you located?"
+                            value={formData.location}
+                            onChange={handleChange}
+                        />
+
+                        <input
+                            type="text"
+                            name="contact"
+                            placeholder="Contact Number"
+                            value={formData.contact}
+                            onChange={handleChange}
+                        />
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email address"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            required
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            value={confirmPassword}
+                            onChange={(event) =>
+                                setConfirmPassword(event.target.value)
+                            }
+                            required
+                        />
+
+                        {!isRead && (
+                            <>
+                                <select defaultValue="">
+                                    <option value="" disabled>
+                                        What genre do you want to write in?
+                                    </option>
+
+                                    <option value="personal-essay">
+                                        Personal Essay
+                                    </option>
+
+                                    <option value="fiction">
+                                        Fiction
+                                    </option>
+
+                                    <option value="poetry">
+                                        Poetry
+                                    </option>
+
+                                    <option value="romance">
+                                        Romance
+                                    </option>
+
+                                    <option value="self-growth">
+                                        Self Growth
+                                    </option>
+
+                                    <option value="journal">
+                                        Journal / Diary
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+                                </select>
+
+                                <select defaultValue="">
+                                    <option value="" disabled>
+                                        What are you creating?
+                                    </option>
+
+                                    <option value="weekly-book">
+                                        Weekly Book
+                                    </option>
+
+                                    <option value="weekly-diary">
+                                        Weekly Diary
+                                    </option>
+
+                                    <option value="weekly-column">
+                                        Weekly Column
+                                    </option>
+
+                                    <option value="short-stories">
+                                        Short Stories
+                                    </option>
+
+                                    <option value="life-notes">
+                                        Life Notes
+                                    </option>
+                                </select>
+
+                                <textarea placeholder="What motivated you to write?" />
+                            </>
+                        )}
+
+                        <button type="submit" disabled={isSubmitting}>
+                            {isSubmitting
+                                ? "Submitting..."
+                                : isRead
+                                    ? "Request to Read"
+                                    : "Request to Write"}
+                        </button>
+                    </form>
+                )}
 
                 {message && (
                     <p className={styles.approvalMessage}>
                         {message}
                     </p>
                 )}
-
-                <p className={styles.weeklyTeaLoginPrompt}>
-                    Already approved? Submit again with the same email.
-                </p>
             </div>
         </div>
     );
